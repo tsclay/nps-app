@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-
+//==================================================
+// Configuration & Server App
 require('dotenv').config()
 
 const PORT = process.env.PORT || 3005
@@ -9,6 +10,13 @@ const MONGO_URI =
 
 const app = express()
 
+//==================================================
+// Middleware
+app.use(express.json())
+app.use(express.static('public'))
+
+//==================================================
+// Listeners
 mongoose.connect(
   MONGO_URI,
   {
