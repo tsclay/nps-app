@@ -1,0 +1,25 @@
+{
+  "name": "nps-app",
+  "version": "1.0.0",
+  "description": "An app for users to search for and save favorite national park destinations",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsclay/nps-app.git"
+  },
+  "author": "Tim Clay, Shane Dubish, Ethan Ash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsclay/nps-app/issues"
+  },
+  "homepage": "https://github.com/tsclay/nps-app#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.19"
+  }
+}
