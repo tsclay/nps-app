@@ -12,8 +12,13 @@
   </head>
   <body ng-controller="mainController as main">
     <h1>{{main.hello}}</h1>
-    <div ng-repeat="park in main.parks">
-      <p>{{park.fullName}}</p>
+    <div class="container" ng-class="main.loading ? 'flex-ctr-all' : null">
+      <div ng-if="main.loading === true" id="loading-wrapper">
+        <img src="/assets/loading.gif" alt="" />
+      </div>
+      <div ng-repeat="park in main.parks">
+        <p>{{park.fullName}}</p>
+      </div>
     </div>
   </body>
 </html>
