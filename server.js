@@ -3,8 +3,6 @@ const mongoose = require('mongoose')
 const morgan = require('morgan');
 const moment = require('moment');
 
-
-
 require('dotenv').config()
 
 const PORT = process.env.PORT || 3005
