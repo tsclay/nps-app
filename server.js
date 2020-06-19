@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const morgan = require('morgan');
+const moment = require('moment');
 
 require('dotenv').config()
 
@@ -12,7 +14,7 @@ const app = express()
 mongoose.connect(
   MONGO_URI,
   {
-    useCreateIndex: false,
+    useCreateIndex: true,
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -23,5 +25,9 @@ mongoose.connect(
 )
 
 app.listen(PORT, () => {
-  console.log(`Listening on PORT:${PORT}`)
+  console.log(
+    `Listening on PORT:${PORT}`
+    @,
+    moment().format('MMMM Do YYYY, hh:mm:ss a')
+  );
 })
