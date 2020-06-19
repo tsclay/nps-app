@@ -5,11 +5,30 @@ app.controller('mainController', [
   function ($http) {
     this.hello = 'hello world'
     // GET from NPS API
-    this.getPark = (searchQuery) => {
+    this.getPark = (route, type, query) => {
       $http({
-        method: 'GET',
-        url: `developer.nps.gov/api/v1/parks/?q=${searchQuery}&api_key=`
+        method: 'POST',
+        url: '/getparks',
+        data: {
+          type,
+          query,
+          route
+        }
       })
+        .then(
+          (response) => {
+            this.parks = response.data.data
+            // console.log(response.data.data)
+          },
+          (error) => {
+            console.log('Error found: ', error)
+          }
+        )
+        .catch((error) => {
+          console.log('Catch: ', error)
+        })
     }
+
+    this.getPark('parks', 'stateCode', 'AL')
   }
 ])

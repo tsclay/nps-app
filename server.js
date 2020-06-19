@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const fetch = require('node-fetch')
 //==================================================
 // Configuration & Server App
 require('dotenv').config()
@@ -15,6 +16,18 @@ const app = express()
 // Middleware
 app.use(express.json())
 app.use(express.static('public'))
+
+//==================================================
+// NPS API
+// Using async-await syntax to get fetch to work
+app.post('/getparks', async (req, res) => {
+  const { query, type, route } = req.body
+  const response = await fetch(
+    `https://developer.nps.gov/api/v1/${route}?${type}=${query}&api_key=${API_KEY}`
+  )
+  const json = await response.json()
+  res.json(json)
+})
 
 //==================================================
 // Listeners

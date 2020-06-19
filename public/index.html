@@ -12,5 +12,8 @@
   </head>
   <body ng-controller="mainController as main">
     <h1>{{main.hello}}</h1>
+    <div ng-repeat="park in main.parks">
+      <p>{{park.fullName}}</p>
+    </div>
   </body>
 </html>
