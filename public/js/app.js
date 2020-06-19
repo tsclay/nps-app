@@ -5,8 +5,25 @@ app.controller('mainController', [
   function ($http) {
     this.hello = 'hello world'
     this.loading = false
+    this.options = [
+      {
+        route: 'parks',
+        name: 'Parks',
+        searchTypes: [
+          { name: 'State', type: 'stateCode' },
+          { name: 'General', type: 'q' }
+        ]
+      },
+      {
+        route: 'activities/parks',
+        name: 'Things To Do'
+      }
+    ]
+    this.type = 'q'
+    this.route = null
+    this.query = null
     // GET from NPS API
-    this.getPark = (route, type, query) => {
+    this.hitNPS = (route, type, query) => {
       this.loading = true
       $http({
         method: 'POST',
@@ -32,6 +49,6 @@ app.controller('mainController', [
         })
     }
 
-    this.getPark('parks', 'stateCode', 'AL')
+    // this.getPark('parks', 'stateCode', 'AL')
   }
 ])

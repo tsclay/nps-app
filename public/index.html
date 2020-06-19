@@ -11,6 +11,24 @@
     <title>NPS-App</title>
   </head>
   <body ng-controller="mainController as main">
+    <nav>
+      <form ng-submit="main.hitNPS(main.route, main.type, main.query)">
+        <select ng-model="main.route">
+          <option ng-repeat="option in main.options" ng-value="option.route"
+            >{{option.name}}</option
+          >
+        </select>
+        <select ng-if="main.route === 'parks'" ng-model="main.type">
+          <option
+            ng-repeat="types in main.options[0].searchTypes"
+            ng-value="types.type"
+            >{{types.name}}</option
+          >
+        </select>
+        <input type="text" ng-model="main.query" placeholder="Search" />
+        <button type="submit">GO</button>
+      </form>
+    </nav>
     <h1>{{main.hello}}</h1>
     <div class="container" ng-class="main.loading ? 'flex-ctr-all' : null">
       <div ng-if="main.loading === true" id="loading-wrapper">
