@@ -105,6 +105,11 @@ app.controller('mainController', [
     this.hitNPS = (route, type, query) => {
       this.loading = true
       type = type.join('')
+      if (query === null) {
+        query = 'q='
+      } else {
+        query = `q=${query}`
+      }
 
       $http({
         method: 'POST',
