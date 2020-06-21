@@ -1,5 +1,5 @@
 const states = [
-  ({ name: 'Alabama', stateCode: 'AL' },
+  { name: 'Alabama', stateCode: 'AL' },
   { name: 'Alaska', stateCode: 'AK' },
   { name: 'Arizona', stateCode: 'AZ' },
   { name: 'Arkansas', stateCode: 'AR' },
@@ -48,7 +48,5 @@ const states = [
   { name: 'Washington', stateCode: 'WA' },
   { name: 'West Virginia', stateCode: 'WV' },
   { name: 'Wisconsin', stateCode: 'WI' },
-  { name: 'Wyoming', stateCode: 'WY' })
+  { name: 'Wyoming', stateCode: 'WY' }
 ]
-
-module.exports = states
