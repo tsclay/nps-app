@@ -12,8 +12,9 @@
     <title>NPS-App</title>
   </head>
   <body ng-controller="mainController as main">
-    <nav>
+    <nav class="flex-row-sb">
       <form
+        class="flex-row-sb w-100"
         ng-submit="main.hitNPS(main.route, main.optionsSelected, main.query)"
       >
         <select ng-model="main.route">
@@ -21,8 +22,23 @@
             >{{option.name}}</option
           >
         </select>
-        <div>
-          <div class="dropdown" ng-click="main.showStates = true">
+        <div class="dropdown-wrapper">
+          <button
+            class="toggle-dropdown"
+            type="button"
+            ng-click="main.showStates = !main.showStates"
+          >
+            <svg
+              class="w-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"
+              />
+            </svg>
+          </button>
+          <div class="dropdown">
             <a class="selected" ng-repeat="state in main.selected"
               ><span>{{state}}</span
               ><button
@@ -36,7 +52,7 @@
             <input autocomplete="off" type="text" placeholder="Search" />
           </div>
           <div
-            class="overflow-scroll"
+            class="overflow-scroll w-100"
             ng-class="(main.showStates) ? null : 'hidden'"
             tabindex="-1"
           >
@@ -60,11 +76,12 @@
       <div ng-if="main.loading === true" id="loading-wrapper">
         <img src="/assets/loading.gif" alt="" />
       </div>
-      <div ng-repeat="park in main.parks">
+      <div id="parks-search" ng-repeat="park in main.parks">
         <p>{{park.fullName}}</p>
       </div>
       <div
-        ng-if="main.route === 'activities/parks'"
+        id="things-to-do-search"
+        ng-if="main.route !== 'parks'"
         ng-repeat="park in main.parks.parks"
       >
         <p>{{park.fullName}}</p>

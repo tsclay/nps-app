@@ -6,9 +6,18 @@
   cursor: pointer;
 }
 
+.w-100 {
+  width: 100%;
+}
+
+.dropdown-wrapper {
+  width: 350px;
+  position: relative;
+}
+
 .dropdown {
   cursor: text;
-  width: 50%;
+  /*   width: 50%; */
   border: 1px solid rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
 }
@@ -16,7 +25,6 @@
 .dropdown > input {
   height: 24px;
   border: 0;
-  /* width: 100%; */
   position: static;
   padding: 0;
   max-width: 100%;
@@ -28,16 +36,23 @@
 .overflow-scroll {
   height: 150px;
   overflow: auto;
-  width: 50%;
 }
 
-.delete-button {
+.delete-button,
+.toggle-dropdown {
   line-height: 0;
   margin: 0;
   padding: 0;
   width: 30px;
   height: 30px;
   margin-left: 1em;
+}
+
+.toggle-dropdown {
+  position: absolute;
+  top: 0.4em;
+  right: 0;
+  transform: translateX(-20%);
 }
 
 .container {
@@ -63,4 +78,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.flex-row-start {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+}
+
+.flex-row-sb {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+/* make a sticky nav at some point */
+.sticky {
+  z-index: 1;
+  position: fixed;
+}
+
+.w-50 {
+  width: 50%;
 }
