@@ -14,6 +14,7 @@
 }
 
 .dropdown > input {
+  height: 24px;
   border: 0;
   /* width: 100%; */
   position: static;
@@ -50,7 +51,7 @@
   border: 1px solid rgba(18, 45, 71, 0.274);
   padding: 0.25em;
   padding-left: 0.5em;
-  margin-left: 1em;
+  margin: 0.25em;
 }
 
 #loading-wrapper {

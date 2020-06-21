@@ -21,17 +21,6 @@
           >
         </select>
         <div>
-          <select
-            ng-if="main.showStates === true && main.route === 'parks'"
-            multiple
-          >
-            <option
-              ng-repeat="state in main.states"
-              value="{{state.stateCode}}"
-              ng-selected="main.selected.includes(state.name)"
-              >{{state.name}}</option
-            >
-          </select>
           <div class="dropdown" ng-click="main.showStates = true">
             <a class="selected" ng-repeat="state in main.selected"
               ><span>{{state}}</span
