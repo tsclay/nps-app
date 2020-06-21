@@ -68,7 +68,10 @@ app.controller('mainController', [
           (response) => {
             this.loading = false
             this.parks = response.data.data
-            // console.log(response.data.data)
+            if (this.parks.length === 1) {
+              this.parks = response.data.data[0]
+            }
+            console.log(this.parks)
           },
           (error) => {
             console.log('Error found: ', error)
