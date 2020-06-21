@@ -40,9 +40,6 @@ app.controller('mainController', [
 
     this.unselectState = ($index) => {
       const deletedItem = this.selected.splice($index, 1)
-      const showThisIndex = this.states.findIndex(
-        (state) => state.name === deletedItem[0]
-      )
       console.log(deletedItem[0])
       document.getElementById(`${deletedItem[0]}`).classList.remove('hidden')
       this.optionsSelected.splice($index * 2, 2)
