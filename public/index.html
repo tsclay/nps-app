@@ -12,8 +12,9 @@
   </head>
   <body ng-controller="mainController as main">
     <nav>
-      {{main.type}}
-      <form ng-submit="main.hitNPS(main.route, main.type, main.query)">
+      <form
+        ng-submit="main.hitNPS(main.route, main.optionsSelected, main.query)"
+      >
         <select ng-model="main.route">
           <option ng-repeat="option in main.options" ng-value="option.route"
             >{{option.name}}</option
@@ -21,80 +22,50 @@
         </select>
         <div>
           <select
-            ng-options="state.stateCode for state in main.states"
             ng-if="main.showStates === true && main.route === 'parks'"
-            multiple="multiple"
-            ng-model="main.type"
-          ></select>
-          <input
-            ng-click="main.showStates = !main.showStates"
-            type="text"
-            placeholder="Search"
-          />
+            multiple
+          >
+            <option
+              ng-repeat="state in main.states"
+              value="{{state.stateCode}}"
+              ng-selected="main.selected.includes(state.name)"
+              >{{state.name}}</option
+            >
+          </select>
+          <div class="dropdown" ng-click="main.showStates = true">
+            <a class="selected" ng-repeat="state in main.selected"
+              ><span>{{state}}</span
+              ><button
+                ng-click="main.unselectState($index, state)"
+                type="button"
+                class="delete-button"
+              >
+                x
+              </button></a
+            >
+            <input autocomplete="off" type="text" placeholder="Search" />
+          </div>
           <div
             class="overflow-scroll"
             ng-class="(main.showStates) ? null : 'hidden'"
             tabindex="-1"
           >
-            <div class="item selected" data-value="AL">Alabama</div>
-            <div class="item" data-value="AK">Alaska</div>
-            <div class="item" data-value="AZ">Arizona</div>
-            <div class="item" data-value="AR">Arkansas</div>
-            <div class="item" data-value="CA">California</div>
-            <div class="item" data-value="CO">Colorado</div>
-            <div class="item" data-value="CT">Connecticut</div>
-            <div class="item" data-value="DE">Delaware</div>
-            <div class="item" data-value="DC">District Of Columbia</div>
-            <div class="item" data-value="FL">Florida</div>
-            <div class="item" data-value="GA">Georgia</div>
-            <div class="item" data-value="HI">Hawaii</div>
-            <div class="item" data-value="ID">Idaho</div>
-            <div class="item" data-value="IL">Illinois</div>
-            <div class="item" data-value="IN">Indiana</div>
-            <div class="item" data-value="IA">Iowa</div>
-            <div class="item" data-value="KS">Kansas</div>
-            <div class="item" data-value="KY">Kentucky</div>
-            <div class="item" data-value="LA">Louisiana</div>
-            <div class="item" data-value="ME">Maine</div>
-            <div class="item" data-value="MD">Maryland</div>
-            <div class="item" data-value="MA">Massachusetts</div>
-            <div class="item" data-value="MI">Michigan</div>
-            <div class="item" data-value="MN">Minnesota</div>
-            <div class="item" data-value="MS">Mississippi</div>
-            <div class="item" data-value="MO">Missouri</div>
-            <div class="item" data-value="MT">Montana</div>
-            <div class="item" data-value="NE">Nebraska</div>
-            <div class="item" data-value="NV">Nevada</div>
-            <div class="item" data-value="NH">New Hampshire</div>
-            <div class="item" data-value="NJ">New Jersey</div>
-            <div class="item" data-value="NM">New Mexico</div>
-            <div class="item" data-value="NY">New York</div>
-            <div class="item" data-value="NC">North Carolina</div>
-            <div class="item" data-value="ND">North Dakota</div>
-            <div class="item" data-value="OH">Ohio</div>
-            <div class="item" data-value="OK">Oklahoma</div>
-            <div class="item" data-value="OR">Oregon</div>
-            <div class="item" data-value="PA">Pennsylvania</div>
-            <div class="item" data-value="RI">Rhode Island</div>
-            <div class="item" data-value="SC">South Carolina</div>
-            <div class="item" data-value="SD">South Dakota</div>
-            <div class="item" data-value="TN">Tennessee</div>
-            <div class="item" data-value="TX">Texas</div>
-            <div class="item" data-value="UT">Utah</div>
-            <div class="item" data-value="VT">Vermont</div>
-            <div class="item" data-value="VA">Virginia</div>
-            <div class="item" data-value="WA">Washington</div>
-            <div class="item" data-value="WV">West Virginia</div>
-            <div class="item" data-value="WI">Wisconsin</div>
-            <div class="item" data-value="WY">Wyoming</div>
+            <div
+              id="{{state.name}}"
+              class="pointer"
+              ng-click="main.selectState($index, $event, state.stateCode)"
+              ng-repeat="state in main.states"
+            >
+              {{state.name}}
+            </div>
           </div>
         </div>
-
         <input type="text" ng-model="main.query" placeholder="Search" />
         <button type="submit">GO</button>
       </form>
     </nav>
     <h1>{{main.hello}}</h1>
+    <p ng-repeat="blah in main.optionsSelected track by $index">{{blah}}</p>
     <div class="container" ng-class="main.loading ? 'flex-ctr-all' : null">
       <div ng-if="main.loading === true" id="loading-wrapper">
         <img src="/assets/loading.gif" alt="" />

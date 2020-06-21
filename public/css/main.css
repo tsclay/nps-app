@@ -2,13 +2,55 @@
   display: none;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.dropdown {
+  cursor: text;
+  width: 50%;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 0.28571429rem;
+}
+
+.dropdown > input {
+  border: 0;
+  /* width: 100%; */
+  position: static;
+  padding: 0;
+  max-width: 100%;
+  margin: 0.45238095em 0 0.45238095em 0.64285714em;
+  width: 3.5em;
+  line-height: 1.21428571em;
+}
+
 .overflow-scroll {
   height: 150px;
   overflow: auto;
+  width: 50%;
+}
+
+.delete-button {
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  margin-left: 1em;
 }
 
 .container {
   min-height: 500px;
+}
+
+.selected {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(18, 45, 71, 0.274);
+  padding: 0.25em;
+  padding-left: 0.5em;
+  margin-left: 1em;
 }
 
 #loading-wrapper {

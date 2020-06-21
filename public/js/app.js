@@ -77,9 +77,35 @@ app.controller('mainController', [
     this.type = 'q'
     this.route = null
     this.query = null
+    this.selected = []
+    this.optionsSelected = []
+
+    this.selectState = ($index, $event, stateCode) => {
+      this.selected.push($event.currentTarget.innerText)
+      $event.currentTarget.classList.add('hidden')
+      this.optionsSelected.push(`stateCode=${stateCode}`)
+      this.optionsSelected.push('&')
+    }
+
+    this.showChange = () => {
+      console.log(this.optionsSelected)
+    }
+
+    this.unselectState = ($index) => {
+      const deletedItem = this.selected.splice($index, 1)
+      const showThisIndex = this.states.findIndex(
+        (state) => state.name === deletedItem[0]
+      )
+      console.log(deletedItem[0])
+      document.getElementById(`${deletedItem[0]}`).classList.remove('hidden')
+      this.optionsSelected.splice($index * 2, 2)
+    }
+
     // GET from NPS API
     this.hitNPS = (route, type, query) => {
       this.loading = true
+      type = type.join('')
+
       $http({
         method: 'POST',
         url: '/getparks',
