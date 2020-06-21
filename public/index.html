@@ -63,6 +63,12 @@
       <div ng-repeat="park in main.parks">
         <p>{{park.fullName}}</p>
       </div>
+      <div
+        ng-if="main.route === 'activities/parks'"
+        ng-repeat="park in main.parks.parks"
+      >
+        <p>{{park.fullName}}</p>
+      </div>
     </div>
   </body>
 </html>
