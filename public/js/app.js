@@ -19,7 +19,8 @@ app.controller('mainController', [
       {
         route: 'activities/parks',
         name: 'Things To Do'
-      }
+      },
+      { route: 'topics/parks', name: 'Topics' }
     ]
     this.type = 'q'
     this.route = null
