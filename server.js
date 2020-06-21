@@ -22,7 +22,7 @@ app.use(express.static('public'))
 // Using async-await syntax to get fetch to work
 app.post('/getparks', async (req, res) => {
   const { query, type, route } = req.body
-  const url = `https://developer.nps.gov/api/v1/${route}?${type}&api_key=${API_KEY}`
+  const url = `https://developer.nps.gov/api/v1/${route}?${type}${query}&api_key=${API_KEY}`
   const response = await fetch(url)
   const json = await response.json()
   res.json(json)
