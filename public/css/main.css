@@ -1,3 +1,22 @@
+body {
+  /* body */
+  background-color: rgb(197, 255, 182);
+}
+
+nav {
+  height: 200px;
+}
+
+footer {
+  height: 400px;
+}
+
+nav {
+  background-color: rgb(120, 167, 116);
+}
+footer {
+  background-color: #0e7003;
+}
 /* ============================================ */
 /* COMPONENTS */
 
