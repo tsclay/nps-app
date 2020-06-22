@@ -94,27 +94,20 @@ app.controller('mainController', [
     }
 
     //   // User
-    // this.signup = function() {
-    //   $http(
-    //     {
-    //       method: 'POST',
-    //       url: '/nps',
-    //       data: {
-    //         username: ,// TODO: create input
-    //         password: ,// TODO: create input
-    //         email: ,// TODO: create input
-    //         phoneNum: ,// TODO: create input
-    //         firstName: ,// TODO: create input
-    //         lastName: ,// TODO: create input
-    //         premiumUser: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+    this.signup = () => {
+      console.log(this.createForm)
+      $http({
+        method: 'POST',
+        url: '/nps',
+        data: this.createForm
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log('Catch ', error)
+        })
+    }
     // this.login = function() {
     //   $http(
     //     {
