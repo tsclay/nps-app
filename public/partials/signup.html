@@ -1,4 +1,4 @@
-<form ng-submit="main.signup(event.preventDefault())">
+<form ng-submit="main.signup($event)">
   <fieldset>
     <label for="firstName">First Name</label>
     <input
@@ -45,5 +45,10 @@
       placeholder="Password"
     />
   </fieldset>
+  <label for="premium"
+    >Sign up for Premium?
+    <input ng-model="main.createForm.premiumUser" type="checkbox" id="premium"
+  /></label>
+
   <button type="submit">SUBMIT</button>
 </form>
