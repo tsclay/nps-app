@@ -94,6 +94,8 @@ app.controller('mainController', [
     }
 
     //   // User
+    this.loggedInUser = false;
+
     this.signup = (event) => {
       $http({
         method: 'POST',
@@ -105,7 +107,7 @@ app.controller('mainController', [
         })
         .catch((error) => {
           event.preventDefault()
-          console.log('Catch ', error)
+          console.log('Catch !!! ', error)
         })
     }
     this.login = function() {
@@ -114,8 +116,8 @@ app.controller('mainController', [
           method: 'POST',
           url: '/session',
           data: {
-            Username: this.loginUsername,
-            Password: this.loginPassword
+            username: this.loginUsername,
+            password: this.loginPassword
           }
         }
       ).then(
@@ -123,6 +125,7 @@ app.controller('mainController', [
           if (response.data.username) {
             console.log(response.data);
             controller.loggedInUser = response.data
+            controller.displayedPartial = controller.includePath[0]
           } else {
             controller.loginUsername = null;
             controller.loginPassword = null;
@@ -151,18 +154,18 @@ app.controller('mainController', [
     //     }
     //   )
     // }
-    // this.logout = function() {
-    //   $http(
-    //     {
-    //       method: 'DELETE',
-    //       url: '/session'
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+    this.logout = function() {
+      $http(
+        {
+          method: 'DELETE',
+          url: '/session'
+        }
+      ).then(
+        function(response) {
+          console.log(response);
+        }
+      )
+    }
     // // Parks
     // this.addPark = function() {
     //   $http(
