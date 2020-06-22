@@ -4,6 +4,8 @@ const fetch = require('node-fetch')
 const morgan = require('morgan')
 const moment = require('moment')
 
+const npsController = require('./controllers/npsController')
+
 //==================================================
 // Configuration & Server App
 
@@ -20,6 +22,7 @@ const app = express()
 // Middleware
 app.use(express.json())
 app.use(express.static('public'))
+app.use('/users', npsController)
 
 //==================================================
 // NPS API
