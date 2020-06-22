@@ -94,6 +94,8 @@ app.controller('mainController', [
     }
 
     //   // User
+    this.loggedInUser = false;
+    
     this.signup = () => {
       console.log(this.createForm)
       $http({
@@ -108,22 +110,28 @@ app.controller('mainController', [
           console.log('Catch ', error)
         })
     }
-    // this.login = function() {
-    //   $http(
-    //     {
-    //       method: 'POST',
-    //       url: '/session',
-    //       data: {
-    //         loginUsername: ,// TODO: create input
-    //         loginPassword: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+    this.login = function() {
+      $http(
+        {
+          method: 'POST',
+          url: '/session',
+          data: {
+            Username: this.loginUsername,
+            Password: this.loginPassword
+          }
+        }
+      ).then(
+        function(response) {
+          if (response.data.username) {
+            console.log(response.data);
+            controller.loggedInUser = response.data
+          } else {
+            controller.loginUsername = null;
+            controller.loginPassword = null;
+          }
+        }
+      )
+    }
     // this.updateUser = function() {
     //   $http(
     //     {
@@ -237,8 +245,7 @@ app.controller('mainController', [
     // $http(
     //   {
     //     method: 'GET',
-    //     url: // TODO: add route
-    //     // TODO: Setup url for session
+    //     url: '/session'
     //   }
     // ).then(
     //   function(response) {
