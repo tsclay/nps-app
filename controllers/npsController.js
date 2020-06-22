@@ -1,11 +1,12 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
+
 const npsUser = express.Router()
 
 const User = require('../models/npsModel.js')
 
 npsUser.post('/', async (req, res) => {
-  // req.body.password = await bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
   try {
     const newUser = await User.create(req.body)
     console.log(newUser);
