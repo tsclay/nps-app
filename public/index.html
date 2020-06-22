@@ -15,14 +15,28 @@
   <body ng-controller="mainController as main">
     <nav class="flex-row sb align-center">
       <img class="logo" src="./assets/logo.png" alt="parketList" />
-      <img class="logo" src="./assets/pro-logo.png" alt="parketList Pro" />
+      <span ng-if="logout" class="nav-text">
+        <a href="#">Search</a>
+        <a href="#">Login</a>
+        <a href="#">Signup</a>
+      </span>
+      <span ng-if="login" class="nav-text">
+        <a href="#">Search</a>
+        <a href="#">Favorites</a>
+        <a href="#">Account</a>
+        <a href="#">Logout</a>
+      </span>
     </nav>
     <div class="search">
       <h1>{{main.hello}}</h1>
       <div ng-include="'partials/search.html'"></div>
     </div>
     <footer>
-      <p>some text</p>
+      <span>
+        <a href="#">Help</a>
+        <a href="#">About</a>
+        <a target="_blank" href="https://github.com/tsclay/nps-app">© Copyright 2020</a>
+      </span>
     </footer>
   </body>
 </html>
