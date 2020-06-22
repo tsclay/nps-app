@@ -16,17 +16,20 @@ const { API_KEY } = process.env
 
 const app = express()
 
-const npsController = require('./controllers/npsController.js');
-app.use('/nps', npsController);
-
-const sessionController = require('./controllers/session.js');
-app.use('/session', sessionController);
-
 //==================================================
 // Middleware
 app.use(express.json())
 app.use(express.static('public'))
-app.use('/users', npsController)
+
+//==================================================
+// Controllers
+const npsController = require('./controllers/npsController.js')
+
+app.use('/nps', npsController)
+
+const sessionController = require('./controllers/session.js')
+
+app.use('/session', sessionController)
 
 //==================================================
 // NPS API
