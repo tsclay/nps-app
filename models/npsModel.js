@@ -8,12 +8,14 @@ const userSchema = mongoose.Schema(
     phoneNum: String,
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
-    favoriteParks: {
+    premiumUser: Boolean,
+    favoriteParks: [{
       name: String,
       parkId: String,
-      parkImage: String
-    }
+      parkImage: String,
+      parkNotes: String
+    }]
   }
 );
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);

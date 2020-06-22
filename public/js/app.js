@@ -8,7 +8,16 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
     $http(
       {
         method: 'POST',
-        url: // TODO: add route
+        url: '/nps',
+        data: {
+          username: ,// TODO: create input
+          password: ,// TODO: create input
+          email: ,// TODO: create input
+          phoneNum: ,// TODO: create input
+          firstName: ,// TODO: create input
+          lastName: ,// TODO: create input
+          premiumUser: // TODO: create input
+        }
       }
     ).then(
       function(response) {
@@ -21,7 +30,11 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
     $http(
       {
         method: 'POST',
-        url: // TODO: add route
+        url: '/session',
+        data: {
+          username: ,// TODO: create input
+          password: // TODO: create input
+        }
       }
     ).then(
       function(response) {
@@ -34,7 +47,16 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
     $http(
       {
         method: 'PUT',
-        url: // TODO: add route
+        url: '/nps',
+        data: {
+          username: ,// TODO: create input
+          password: ,// TODO: create input
+          email: ,// TODO: create input
+          phoneNum: ,// TODO: create input
+          firstName: ,// TODO: create input
+          lastName: ,// TODO: create input
+          premiumUser: // TODO: create input
+        }
       }
     ).then(
       function(response) {
@@ -47,7 +69,7 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
     $http(
       {
         method: 'DELETE',
-        url: // TODO: add route
+        url: '/session'
       }
     ).then(
       function(response) {
@@ -61,7 +83,12 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
     $http(
       {
         method: 'POST',
-        url: // TODO: add route
+        url: '/nps',
+        data: {
+          name: ,// TODO: create input
+          parkId: ,// TODO: create input
+          parkImage: // TODO: create input
+        }
       }
     ).then(
       function(response) {
@@ -70,6 +97,8 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
     )
   }
 
+  //////////////////////////////////////
+  //////////////////////////////////////
   this.getAllParks = function() {
     $http(
       {
@@ -95,12 +124,17 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
       }
     )
   }
+  //////////////////////////////////////
+  //////////////////////////////////////
 
   this.updateSavedPark = function() {
     $http(
       {
         method: 'PUT',
-        url: // TODO: add route
+        url: '/nps',
+        data: {
+          parkNotes: // TODO: create input
+        }
       }
     ).then(
       function(response) {
@@ -113,7 +147,7 @@ app.controller('NationalParksServiceController', ['$http', function($http) {
     $http(
       {
         method: 'DELETE',
-        url: // TODO: add route
+        url: '/nps'
       }
     ).then(
       function(response) {

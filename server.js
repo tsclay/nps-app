@@ -11,6 +11,12 @@ const MONGO_URI =
 
 const app = express()
 
+const npsController = require('./controllers/npsController.js');
+app.use('/nps', npsController);
+
+const sessionController = require('./controllers/session.js');
+app.use('/session', sessionController);
+
 mongoose.connect(
   MONGO_URI,
   {
