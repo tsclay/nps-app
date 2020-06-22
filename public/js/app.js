@@ -94,17 +94,17 @@ app.controller('mainController', [
     }
 
     //   // User
-    this.signup = () => {
-      console.log(this.createForm)
+    this.signup = (event) => {
       $http({
         method: 'POST',
         url: '/nps',
         data: this.createForm
       })
         .then((response) => {
-          console.log(response)
+          this.displayedPartial = this.includePath[3]
         })
         .catch((error) => {
+          event.preventDefault()
           console.log('Catch ', error)
         })
     }
