@@ -16,12 +16,28 @@
       <img class="logo" src="./assets/bitmap2.png" alt="parketList" />
       <img class="logo" src="./assets/bitmap3.png" alt="parketList Pro" />
     </nav>
-    <div class="search">
+    <div class="container">
       <h1>{{main.hello}}</h1>
-      <div ng-include="'partials/search.html'"></div>
+      <div ng-include="main.displayedPartial"></div>
     </div>
-    <footer>
-      <p>some text</p>
+    <footer class="flex-column align-center">
+      <ul class="standard-list flex-center-all">
+        <li class="ml-2">
+          <a
+            class="nav-link"
+            ng-click="main.displayedPartial = main.includePath[1]"
+            >About</a
+          >
+        </li>
+        <li class="ml-2">
+          <a
+            class="nav-link"
+            ng-click="main.displayedPartial = main.includePath[0]"
+            >Help</a
+          >
+        </li>
+      </ul>
+      <p>Copyright © 2020 All Rights Reserved.</p>
     </footer>
   </body>
 </html>

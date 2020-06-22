@@ -4,6 +4,14 @@ app.controller('mainController', [
   '$http',
   function ($http) {
     const controller = this
+    this.includePath = [
+      'partials/help.html',
+      'partials/about_site.html',
+      'partials/search.html',
+      'partials/login.html',
+      'partials/signup.html',
+      'partials/favorites.html'
+    ]
     this.hello = 'Travel log'
     this.loading = false
     this.states = states
