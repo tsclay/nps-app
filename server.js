@@ -1,8 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const fetch = require('node-fetch')
+const morgan = require('morgan')
+const moment = require('moment')
+
 //==================================================
 // Configuration & Server App
+
 require('dotenv').config()
 
 const PORT = process.env.PORT || 3005
@@ -34,7 +38,7 @@ app.post('/getparks', async (req, res) => {
 mongoose.connect(
   MONGO_URI,
   {
-    useCreateIndex: false,
+    useCreateIndex: true,
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -45,5 +49,7 @@ mongoose.connect(
 )
 
 app.listen(PORT, () => {
-  console.log(`Listening on PORT:${PORT}`)
+  console.log(
+    `Listening on PORT:${PORT} @ ${moment().format('MMMM Do YYYY, hh:mm:ss a')}`
+  )
 })
