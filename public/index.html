@@ -22,7 +22,7 @@
             >{{option.name}}</option
           >
         </select>
-        <div class="dropdown-wrapper">
+        <div ng-if="main.route === 'parks'" class="dropdown-wrapper">
           <button
             class="toggle-dropdown"
             type="button"
@@ -49,7 +49,7 @@
                 x
               </button></a
             >
-            <input autocomplete="off" type="text" placeholder="Search" />
+            <input autocomplete="off" type="text" placeholder="State" />
           </div>
           <div
             class="overflow-scroll w-100"
@@ -71,8 +71,7 @@
       </form>
     </nav>
     <h1>{{main.hello}}</h1>
-    <p ng-repeat="blah in main.optionsSelected track by $index">{{blah}}</p>
-    <div class="container" ng-class="main.loading ? 'flex-ctr-all' : null">
+    <div class="container" ng-class="main.loading ? 'flex-center-all' : null">
       <div ng-if="main.loading === true" id="loading-wrapper">
         <img src="/assets/loading.gif" alt="" />
       </div>
