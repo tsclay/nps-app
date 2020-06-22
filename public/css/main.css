@@ -45,7 +45,8 @@ footer {
   background-color: #0e7003;
 }
 
-footer a, p {
+footer a,
+p {
   padding: 10px;
   font-size: 15px;
   font-weight: bold;
@@ -217,7 +218,6 @@ footer a, p {
 }
 
 .overflow-scroll {
-  height: 150px;
   overflow: auto;
 }
 
@@ -234,4 +234,12 @@ footer a, p {
 .nav-link:hover {
   color: orange;
   cursor: pointer;
+}
+
+#states {
+  height: 200px;
+}
+
+.search-results {
+  height: 400px;
 }
