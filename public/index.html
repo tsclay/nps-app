@@ -12,8 +12,16 @@
     <title>NPS-App</title>
   </head>
   <body ng-controller="mainController as main">
-    <nav class="flex-row-sb"></nav>
-    <h1>{{main.hello}}</h1>
-    <div ng-include="'partials/search.html'"></div>
+    <nav class="flex-row sb align-center">
+      <img class="logo" src="./assets/bitmap2.png" alt="parketList" />
+      <img class="logo" src="./assets/bitmap3.png" alt="parketList Pro" />
+    </nav>
+    <div class="search">
+      <h1>{{main.hello}}</h1>
+      <div ng-include="'partials/search.html'"></div>
+    </div>
+    <footer>
+      <p>some text</p>
+    </footer>
   </body>
 </html>
