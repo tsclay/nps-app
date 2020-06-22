@@ -1,0 +1,49 @@
+<form ng-submit="main.signup(event.preventDefault())">
+  <fieldset>
+    <label for="firstName">First Name</label>
+    <input
+      type="text"
+      ng-model="main.createForm.firstName"
+      id="firstName"
+      placeholder="First Name"
+    />
+    <label for="lastName">Last Name</label>
+    <input
+      type="text"
+      ng-model="main.createForm.lastName"
+      id="lastName"
+      placeholder="Last Name"
+    />
+    <label for="email">Email</label>
+    <input
+      type="text"
+      ng-model="main.createForm.email"
+      id="email"
+      placeholder="Email"
+    />
+    <label for="phone">Phone</label>
+    <input
+      type="text"
+      ng-model="main.createForm.phoneNum"
+      id="phone"
+      placeholder="Phone"
+    />
+  </fieldset>
+  <fieldset>
+    <label for="username">Username</label>
+    <input
+      type="text"
+      ng-model="main.createForm.username"
+      id="username"
+      placeholder="Username"
+    />
+    <label for="password">Password</label>
+    <input
+      type="text"
+      ng-model="main.createForm.password"
+      id="password"
+      placeholder="Password"
+    />
+  </fieldset>
+  <button type="submit">SUBMIT</button>
+</form>
