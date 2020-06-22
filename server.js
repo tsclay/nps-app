@@ -4,8 +4,6 @@ const fetch = require('node-fetch')
 const morgan = require('morgan')
 const moment = require('moment')
 
-const npsController = require('./controllers/npsController')
-
 //==================================================
 // Configuration & Server App
 
@@ -17,6 +15,12 @@ const MONGO_URI =
 const { API_KEY } = process.env
 
 const app = express()
+
+const npsController = require('./controllers/npsController.js');
+app.use('/nps', npsController);
+
+const sessionController = require('./controllers/session.js');
+app.use('/session', sessionController);
 
 //==================================================
 // Middleware

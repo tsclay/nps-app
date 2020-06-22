@@ -173,6 +173,10 @@ app.controller('mainController', [
       }
     )
   }
+<<<<<<< HEAD
+
+=======
+>>>>>>> e2cd68fa66dd451c4dd9eba9dac1ac55c3924808
   //////////////////////////////////////
   //////////////////////////////////////
   this.getAllParks = function() {
@@ -245,5 +249,3 @@ app.controller('mainController', [
     }
   );
 }]);
-
-
