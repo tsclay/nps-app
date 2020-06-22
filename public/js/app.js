@@ -121,8 +121,8 @@ app.controller('mainController', [
     //       method: 'POST',
     //       url: '/session',
     //       data: {
-    //         username: ,// TODO: create input
-    //         password: // TODO: create input
+    //         loginUsername: ,// TODO: create input
+    //         loginPassword: // TODO: create input
     //       }
     //     }
     //   ).then(
