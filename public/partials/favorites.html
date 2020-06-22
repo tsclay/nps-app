@@ -2,18 +2,18 @@
   <h3>Favorites</h3>
   <br />
   <dl ng-repeat="">
-    <dt ng-click="function to show info()">{{ctrl.?.name}}</dt>
+    <dt ng-click="function to show info()">{{main.?.name}}</dt>
     <img src="{{}}" alt="" />
-    <dt ng-click="ctrl.deletePark(._id)">X</dt>
+    <dt ng-click="main.deletePark(._id)">X</dt>
   </dl>
 </div>
 <div class="favDetails">
   <h3>Park Info:</h3>
   <br />
   <img src="{{}}" alt="" />
-  <h4>{{ ctrl.?.name }}</h4>
-  <h4>{{ctrl.?.hours}}</h4>
-  <h4>{{ctrl.?.camping}}</h4>
-  <h4>{{ctrl.?.hiking}}</h4>
-  <h4>{{ctrl.?.notes}}</h4>
+  <h4>{{ main.?.name }}</h4>
+  <h4>{{main.?.hours}}</h4>
+  <h4>{{main.?.camping}}</h4>
+  <h4>{{main.?.hiking}}</h4>
+  <h4>{{main.?.notes}}</h4>
 </div>
