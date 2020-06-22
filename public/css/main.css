@@ -123,12 +123,17 @@ p {
 .logo {
   height: 25%;
   margin: 2%;
+  cursor: pointer;
 }
 
 /* ============================================ */
 /* PARTIALS WRAPPERS */
 .container {
   height: 80%;
+}
+
+.trademark {
+  font-size: .4em;
 }
 
 /* ============================================ */
@@ -227,7 +232,7 @@ p {
 }
 
 .nav-link:hover {
-  color: aqua;
+  color: orange;
   cursor: pointer;
 }
 
