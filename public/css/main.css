@@ -1,15 +1,7 @@
-.hidden {
-  display: none;
-}
+/* ============================================ */
+/* COMPONENTS */
 
-.pointer {
-  cursor: pointer;
-}
-
-.w-100 {
-  width: 100%;
-}
-
+/* Drop-down search bar ================= */
 .dropdown-wrapper {
   width: 350px;
   position: relative;
@@ -17,7 +9,6 @@
 
 .dropdown {
   cursor: text;
-  /*   width: 50%; */
   border: 1px solid rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
 }
@@ -31,11 +22,6 @@
   margin: 0.45238095em 0 0.45238095em 0.64285714em;
   width: 3.5em;
   line-height: 1.21428571em;
-}
-
-.overflow-scroll {
-  height: 150px;
-  overflow: auto;
 }
 
 .delete-button,
@@ -69,12 +55,40 @@
   margin: 0.25em;
 }
 
+/* Loading icon for AJAX requests ================= */
 #loading-wrapper {
   width: 80px;
   height: 90px;
 }
 
-.flex-ctr-all {
+/* Sticky nav bar ================= */
+.sticky {
+  z-index: 1;
+  position: fixed;
+}
+
+/* ============================================ */
+/* WIDTHS */
+
+.w-25 {
+  width: 25%;
+}
+.w-50 {
+  width: 50%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* ============================================ */
+/* FLEXBOX */
+
+.flex-center-all {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,12 +106,18 @@
   justify-content: space-between;
 }
 
-/* make a sticky nav at some point */
-.sticky {
-  z-index: 1;
-  position: fixed;
+/* ============================================ */
+/* UTILITIES */
+
+.hidden {
+  display: none;
 }
 
-.w-50 {
-  width: 50%;
+.pointer {
+  cursor: pointer;
+}
+
+.overflow-scroll {
+  height: 150px;
+  overflow: auto;
 }
