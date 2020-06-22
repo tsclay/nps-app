@@ -38,6 +38,7 @@
     </div>
     <div
       class="overflow-scroll w-100"
+      id="states"
       ng-class="(main.showStates) ? null : 'hidden'"
       tabindex="-1"
     >
@@ -58,14 +59,10 @@
   <div ng-if="main.loading === true" id="loading-wrapper">
     <img src="/assets/loading.gif" alt="" />
   </div>
-  <div id="parks-search" ng-repeat="park in main.parks">
-    <p>{{park.fullName}}</p>
+  <div class="overflow-scroll search-results">
+    <p ng-repeat="park in main.parks">{{park.fullName}}</p>
   </div>
-  <div
-    id="things-to-do-search"
-    ng-if="main.route !== 'parks'"
-    ng-repeat="park in main.parks.parks"
-  >
-    <p>{{park.fullName}}</p>
+  <div class="overflow-scroll search-results" ng-if="main.route !== 'parks'">
+    <p ng-repeat="park in main.parks.parks">{{park.fullName}}</p>
   </div>
 </div>
