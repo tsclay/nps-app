@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const fetch = require('node-fetch')
 const morgan = require('morgan')
 const moment = require('moment')
+const session = require('express-session')
 
 //==================================================
 // Configuration & Server App
@@ -18,6 +19,13 @@ const app = express()
 
 //==================================================
 // Middleware
+app.use(
+  session({
+    secret: 'feedmeseymour',
+    resave: false,
+    saveUninitialized: false
+  })
+)
 app.use(express.json())
 app.use(express.static('public'))
 

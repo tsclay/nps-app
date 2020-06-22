@@ -94,6 +94,8 @@ app.controller('mainController', [
     }
 
     //   // User
+    this.loggedInUser = false;
+
     this.signup = (event) => {
       $http({
         method: 'POST',
@@ -105,25 +107,32 @@ app.controller('mainController', [
         })
         .catch((error) => {
           event.preventDefault()
-          console.log('Catch ', error)
+          console.log('Catch !!! ', error)
         })
     }
-    // this.login = function() {
-    //   $http(
-    //     {
-    //       method: 'POST',
-    //       url: '/session',
-    //       data: {
-    //         username: ,// TODO: create input
-    //         password: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+    this.login = function() {
+      $http(
+        {
+          method: 'POST',
+          url: '/session',
+          data: {
+            username: this.loginUsername,
+            password: this.loginPassword
+          }
+        }
+      ).then(
+        function(response) {
+          if (response.data.username) {
+            console.log(response.data);
+            controller.loggedInUser = response.data
+            controller.displayedPartial = controller.includePath[0]
+          } else {
+            controller.loginUsername = null;
+            controller.loginPassword = null;
+          }
+        }
+      )
+    }
     // this.updateUser = function() {
     //   $http(
     //     {
@@ -145,18 +154,18 @@ app.controller('mainController', [
     //     }
     //   )
     // }
-    // this.logout = function() {
-    //   $http(
-    //     {
-    //       method: 'DELETE',
-    //       url: '/session'
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+    this.logout = function() {
+      $http(
+        {
+          method: 'DELETE',
+          url: '/session'
+        }
+      ).then(
+        function(response) {
+          console.log(response);
+        }
+      )
+    }
     // // Parks
     // this.addPark = function() {
     //   $http(
@@ -237,8 +246,7 @@ app.controller('mainController', [
     // $http(
     //   {
     //     method: 'GET',
-    //     url: // TODO: add route
-    //     // TODO: Setup url for session
+    //     url: '/session'
     //   }
     // ).then(
     //   function(response) {
