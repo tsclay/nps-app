@@ -27,16 +27,28 @@
         <a href="#">Logout</a>
       </span>
     </nav>
-    <div class="search">
+    <div class="container">
       <h1>{{main.hello}}</h1>
-      <div ng-include="'partials/search.html'"></div>
+      <div ng-include="main.displayedPartial"></div>
     </div>
-    <footer>
-      <span>
-        <a href="#">Help</a>
-        <a href="#">About</a>
-        <a target="_blank" href="https://github.com/tsclay/nps-app">© Copyright 2020</a>
-      </span>
+  <footer >
+      <ul class="standard-list flex-center-all">
+        <li class="ml-2">
+          <a
+            class="nav-link"
+            ng-click="main.displayedPartial = main.includePath[0]"
+            >Help</a
+          >
+        </li>
+        <li class="ml-2">
+          <a
+            class="nav-link"
+            ng-click="main.displayedPartial = main.includePath[1]"
+            >About</a
+          >
+        </li>
+      </ul>
+    <p><a target="_blank" href="https://github.com/tsclay/nps-app">© Copyright 2020</a></p>
     </footer>
   </body>
 </html>
