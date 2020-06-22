@@ -10,7 +10,8 @@ app.controller('mainController', [
       'partials/search.html',
       'partials/login.html',
       'partials/signup.html',
-      'partials/favorites.html'
+      'partials/favorites.html',
+      'partials/account.html'
     ]
     this.hello = 'Travel log'
     this.loading = false
