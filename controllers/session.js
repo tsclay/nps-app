@@ -1,19 +1,23 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcrypt');
-const User = require('../models/npsModel.js');
+const express = require('express')
+
+const router = express.Router()
+const bcrypt = require('bcrypt')
+const User = require('../models/npsModel.js')
 
 router.post('/', (req, res) => {
-  User.findOne({username: req.body.username}, (error, foundUser) => {
+  User.findOne({ username: req.body.username }, (error, foundUser) => {
     if (foundUser === null) {
       res.json({
         message: 'user not found'
       })
     } else {
-      const doesPasswordMatch = bcrypt.compareSync(req.body.password, foundUser.password);
+      const doesPasswordMatch = bcrypt.compareSync(
+        req.body.password,
+        foundUser.password
+      )
       if (doesPasswordMatch) {
-        req.session.user = foundUser;
-        res.json(foundUser);
+        req.session.user = foundUser
+        res.json(foundUser)
       } else {
         res.json({
           message: 'user not found'
@@ -21,10 +25,10 @@ router.post('/', (req, res) => {
       }
     }
   })
-});
+})
 
-router.get('/', (req res) => {
-  res.json(req.session.user);
+router.get('/', (req, res) => {
+  res.json(req.session.user)
 })
 
 router.delete('/', (req, res) => {
@@ -33,6 +37,6 @@ router.delete('/', (req, res) => {
       destroyed: true
     })
   })
-});
+})
 
-module.exports = router;
+module.exports = router
