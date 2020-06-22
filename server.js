@@ -1,13 +1,18 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const morgan = require('morgan');
-const moment = require('moment');
+const fetch = require('node-fetch')
+const morgan = require('morgan')
+const moment = require('moment')
+
+//==================================================
+// Configuration & Server App
 
 require('dotenv').config()
 
 const PORT = process.env.PORT || 3005
 const MONGO_URI =
   process.env.MONGO_URI || 'mongodb://localhost:27017/nationalpark'
+const { API_KEY } = process.env
 
 const app = express()
 
@@ -17,6 +22,26 @@ app.use('/nps', npsController);
 const sessionController = require('./controllers/session.js');
 app.use('/session', sessionController);
 
+//==================================================
+// Middleware
+app.use(express.json())
+app.use(express.static('public'))
+app.use('/users', npsController)
+
+//==================================================
+// NPS API
+// Using async-await syntax to get fetch to work
+app.post('/getparks', async (req, res) => {
+  const { query, type, route } = req.body
+  const url = `https://developer.nps.gov/api/v1/${route}?${type}${query}&api_key=${API_KEY}`
+  const response = await fetch(url)
+  const json = await response.json()
+  res.json(json)
+  console.log(url)
+})
+
+//==================================================
+// Listeners
 mongoose.connect(
   MONGO_URI,
   {
@@ -32,8 +57,6 @@ mongoose.connect(
 
 app.listen(PORT, () => {
   console.log(
-    `Listening on PORT:${PORT}`
-    @,
-    moment().format('MMMM Do YYYY, hh:mm:ss a')
-  );
+    `Listening on PORT:${PORT} @ ${moment().format('MMMM Do YYYY, hh:mm:ss a')}`
+  )
 })
