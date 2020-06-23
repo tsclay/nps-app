@@ -64,14 +64,28 @@
       ng-if="main.route === 'parks'"
       class="overflow-scroll search-results w-25"
     >
-      <p ng-repeat="park in main.parks" ng-click="main.displayedPark = park">
-        {{park.fullName}}
+      <p ng-repeat="park in main.parks">
+        <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+          <img
+            style="width: 20px; height: 20px;"
+            src="../assets/not-favorite.png"
+            alt=""
+          />
+        </button>
+        <a ng-click="main.displayedPark = park" href="#">{{park.fullName}}</a>
       </p>
     </div>
     <div
       class="overflow-scroll search-results w-25"
       ng-if="main.route !== 'parks'"
     >
+      <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+        <img
+          style="width: 20px; height: 20px;"
+          src="../assets/not-favorite.png"
+          alt=""
+        />
+      </button>
       <p
         ng-repeat="park in main.parks.parks"
         ng-click="main.displayedPark = park"

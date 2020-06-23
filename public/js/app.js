@@ -144,7 +144,7 @@ app.controller("mainController", [
     this.updateUser = function () {
       $http({
         method: "PUT",
-        url: "/nps/" + controller.loggedInUser._id,
+        url: `/nps/${controller.loggedInUser._id}`,
         data: {
           username: this.updatedUsername,
           password: this.updatedPassword,
@@ -202,19 +202,28 @@ app.controller("mainController", [
     //     }
     //   )
     // }
-    this.log = () => {
 
-    }
-    this.addParkToSchema = () => {
+    this.addParkToSchema = (park) => {
+      if (park.images.length === 0) {
+        park.images = [{ url: "NotFound" }];
+      }
       $http({
         method: "POST",
-        url: "/nps",
-        data.favoriteParks: {name:},
-      }).then((response) => {
-        console.log(response);
-      }).catch((error) => {
-        console.log(error);
-      });
+        url: `/nps/${this.loggedInUser._id}/addPark`,
+        data: {
+          name: park.fullName,
+          parkId: park.parkCode,
+          parkImage: park.images[0].url,
+          parkNotes: "",
+        },
+      })
+        .then((response) => {
+          console.log(response);
+          this.displayedPartial = this.includePath[1];
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     this.getSavedParks = () => {
