@@ -70,6 +70,9 @@ p {
   border: 1px solid rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
   background: white;
+  max-height: 100px;
+  padding-right: 35px;
+  overflow: auto;
 }
 
 .dropdown > input {
@@ -97,7 +100,7 @@ p {
 .toggle-dropdown {
   position: absolute;
   top: 0.4em;
-  right: 0;
+  right: 1.2em;
   transform: translateX(-20%);
 }
 
@@ -106,9 +109,9 @@ p {
   justify-content: space-between;
   align-items: center;
   border: 1px solid rgba(18, 45, 71, 0.274);
-  padding: 0.25em;
+  padding: 0.2em;
   padding-left: 0.5em;
-  margin: 0.25em;
+  margin: 0.2em;
 }
 
 /* Loading icon for AJAX requests ================= */

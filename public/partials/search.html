@@ -24,6 +24,7 @@
       </svg>
     </button>
     <div class="dropdown">
+      <input autocomplete="off" type="text" placeholder="State" />
       <a class="selected" ng-repeat="state in main.selected"
         ><span>{{state}}</span
         ><button
@@ -34,7 +35,6 @@
           x
         </button></a
       >
-      <input autocomplete="off" type="text" placeholder="State" />
     </div>
     <div
       class="overflow-scroll w-100"
