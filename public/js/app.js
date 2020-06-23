@@ -1,109 +1,109 @@
-const app = angular.module('App', [])
+const app = angular.module("App", []);
 
-app.controller('mainController', [
-  '$http',
+app.controller("mainController", [
+  "$http",
   function ($http) {
-    const controller = this
+    const controller = this;
     this.includePath = [
-      'partials/help.html',
-      'partials/about_site.html',
-      'partials/search.html',
-      'partials/login.html',
-      'partials/signup.html',
-      'partials/favorites.html',
-      'partials/account.html'
-    ]
-    this.hello = 'Travel log'
-    this.loading = false
-    this.states = states
-    this.showStates = false
+      "partials/help.html",
+      "partials/about_site.html",
+      "partials/search.html",
+      "partials/login.html",
+      "partials/signup.html",
+      "partials/favorites.html",
+      "partials/account.html",
+    ];
+    this.hello = "Travel log";
+    this.loading = false;
+    this.states = states;
+    this.showStates = false;
     this.options = [
       {
-        route: 'parks',
-        name: 'Parks',
+        route: "parks",
+        name: "Parks",
         searchTypes: [
-          { name: 'State', type: 'stateCode' },
-          { name: 'General', type: 'q' }
-        ]
+          { name: "State", type: "stateCode" },
+          { name: "General", type: "q" },
+        ],
       },
       {
-        route: 'activities/parks',
-        name: 'Things To Do'
+        route: "activities/parks",
+        name: "Things To Do",
       },
-      { route: 'topics/parks', name: 'Topics' }
-    ]
-    this.type = 'q'
-    this.route = null
-    this.query = null
-    this.selected = []
-    this.optionsSelected = []
+      { route: "topics/parks", name: "Topics" },
+    ];
+    this.type = "q";
+    this.route = null;
+    this.query = null;
+    this.selected = [];
+    this.optionsSelected = [];
 
     this.selectState = ($index, $event, stateCode) => {
-      this.selected.push($event.currentTarget.innerText)
-      $event.currentTarget.classList.add('hidden')
-      this.optionsSelected.push(`stateCode=${stateCode}`)
-      this.optionsSelected.push('&')
-    }
+      this.selected.push($event.currentTarget.innerText);
+      $event.currentTarget.classList.add("hidden");
+      this.optionsSelected.push(`stateCode=${stateCode}`);
+      this.optionsSelected.push("&");
+    };
 
     this.showChange = () => {
-      console.log(this.optionsSelected)
-    }
+      console.log(this.optionsSelected);
+    };
 
     this.unselectState = ($index) => {
-      const deletedItem = this.selected.splice($index, 1)
-      console.log(deletedItem[0])
-      document.getElementById(`${deletedItem[0]}`).classList.remove('hidden')
-      this.optionsSelected.splice($index * 2, 2)
-    }
+      const deletedItem = this.selected.splice($index, 1);
+      console.log(deletedItem[0]);
+      document.getElementById(`${deletedItem[0]}`).classList.remove("hidden");
+      this.optionsSelected.splice($index * 2, 2);
+    };
 
     // GET from NPS API
     this.hitNPS = (route, type, query) => {
-      this.loading = true
-      type = type.join('')
+      this.loading = true;
+      type = type.join("");
       if (query === null) {
-        query = 'q='
+        query = "q=";
       } else {
-        query = `q=${query}`
+        query = `q=${query}`;
       }
 
       $http({
-        method: 'POST',
-        url: '/getparks',
+        method: "POST",
+        url: "/getparks",
         data: {
           type,
           query,
-          route
-        }
+          route,
+        },
       })
         .then(
           (response) => {
-            this.loading = false
-            this.parks = response.data.data
+            this.loading = false;
+            this.parks = response.data.data;
             if (this.parks.length === 1) {
-              this.parks = response.data.data[0]
+              this.parks = response.data.data[0];
             }
-            console.log(this.parks)
+            console.log(this.parks);
           },
           (error) => {
-            console.log('Error found: ', error)
+            console.log("Error found: ", error);
           }
         )
         .catch((error) => {
-          console.log('Catch: ', error)
-        })
-    }
+          console.log("Catch: ", error);
+        });
+    };
 
     //   // User
     this.loggedInUser = false
 
     this.signup = (event) => {
       $http({
-        method: 'POST',
-        url: '/nps',
-        data: this.createForm
+        method: "POST",
+        url: "/nps",
+        data: this.createForm,
       })
         .then((response) => {
-          this.displayedPartial = this.includePath[3]
+          this.displayedPartial = this.includePath[3];
         })
         .catch((error) => {
           event.preventDefault()
@@ -150,6 +150,7 @@ app.controller('mainController', [
     //     }
     //   )
     // }
+<<<<<<< HEAD
     this.logout = () => {
       $http({
         method: 'DELETE',
@@ -160,6 +161,16 @@ app.controller('mainController', [
         console.log(response)
       })
     }
+=======
+    this.logout = function () {
+      $http({
+        method: "DELETE",
+        url: "/session",
+      }).then(function (response) {
+        console.log(response);
+      });
+    };
+>>>>>>> 0e1a2213403ea169e77f7a577d9cbf20f9a72fe3
     // // Parks
     // this.addPark = function() {
     //   $http(
@@ -249,5 +260,5 @@ app.controller('mainController', [
     //     }
     //   }
     // );
-  }
-])
+  },
+]);
