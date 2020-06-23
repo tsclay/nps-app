@@ -94,7 +94,7 @@ app.controller('mainController', [
         })
     }
 
-    //   // User
+    // User
     this.loggedInUser = false
 
     this.signup = (event) => {
@@ -159,6 +159,7 @@ app.controller('mainController', [
         controller.loggedInUser = response.data
       })
     }
+
     this.logout = () => {
       $http({
         method: 'DELETE',
@@ -224,20 +225,19 @@ app.controller('mainController', [
     //     }
     //   )
     // }
-    // this.unsavePark = function() {
-    //   $http(
-    //     {
-    //       method: 'DELETE',
-    //       url: '/nps'
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
-    // this.getAllParks();
-    // this.getSavedParks();
+    this.deletePark = (parkId, $index) => {
+      $http({
+        method: 'DELETE',
+        url: `/nps/${this.loggedInUser._id}/${parkId}`
+      })
+        .then((response) => {
+          console.log(response)
+          this.ourParks.splice($index, 1)
+        })
+        .catch((error) => {
+          console.log('Catch ', error)
+        })
+    }
 
     // $http(
     //   {

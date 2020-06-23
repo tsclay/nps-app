@@ -5,6 +5,7 @@ const npsUser = express.Router()
 
 const User = require('../models/npsModel.js')
 
+// Create a new user account
 npsUser.post('/', async (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
   try {
@@ -16,6 +17,7 @@ npsUser.post('/', async (req, res) => {
   }
 })
 
+// Add a park to user favorites
 npsUser.post('/:id/addPark', async (req, res) => {
   try {
     const findUser = await User.findByIdAndUpdate(
@@ -40,6 +42,7 @@ npsUser.get('/', async (req, res) => {
   }
 })
 
+// Fetch user's favorite parks when requesting Favorites page
 npsUser.get('/:id/getParks', async (req, res) => {
   try {
     const findUser = await User.findById(req.params.id)
@@ -49,6 +52,7 @@ npsUser.get('/:id/getParks', async (req, res) => {
   }
 })
 
+// Update user info in Account
 npsUser.put('/:id', async (req, res) => {
   if (req.body.password !== undefined) {
     req.body.password = bcrypt.hashSync(
@@ -66,6 +70,21 @@ npsUser.put('/:id', async (req, res) => {
   }
 })
 
+// Delete park from favorites
+npsUser.delete('/:id/:parkId', async (req, res) => {
+  try {
+    const deleteThis = await User.findByIdAndUpdate(
+      req.params.id,
+      { $pull: { favoriteParks: { parkId: req.params.parkId } } },
+      { new: true }
+    )
+    res.status(200).json(deleteThis)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+})
+
+// Delete user account
 npsUser.delete('/:id', async (req, res) => {
   try {
     const deleteUser = await User.findByIdAndRemove(req.params.id)
