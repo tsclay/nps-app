@@ -62,12 +62,14 @@ p {
 .dropdown-wrapper {
   width: 350px;
   position: relative;
+  height: 53px;
 }
 
 .dropdown {
   cursor: text;
   border: 1px solid rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
+  background: white;
 }
 
 .dropdown > input {
@@ -261,6 +263,7 @@ p {
 
 #states {
   height: 200px;
+  background: white;
 }
 
 .search-results {
