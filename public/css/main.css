@@ -42,6 +42,7 @@ footer {
   justify-content: center;
   width: 100%;
   height: 10%;
+  position: fixed;
   background-color: #0e7003;
 }
 
@@ -130,6 +131,7 @@ p {
 /* PARTIALS WRAPPERS */
 .container {
   height: 80%;
+  overflow: scroll;
 }
 
 .trademark {
@@ -158,7 +160,10 @@ p {
 }
 
 .w-75 {
+  display: flex;
+  flex-direction: column;
   width: 75%;
+  padding-left: 40px;
 }
 
 .w-100 {
@@ -229,7 +234,7 @@ p {
 }
 
 .overflow-scroll {
-  overflow: auto;
+  overflow: scroll;
 }
 
 .standard-list * {

@@ -55,7 +55,8 @@
   <input type="text" ng-model="main.query" placeholder="Search" />
   <button class="submit" type="submit">GO</button>
 </form>
-<div ng-class="main.loading ? 'flex-center-all' : null">
+<div
+ng-class="main.loading ? 'flex-center-all' : null">
   <div ng-if="main.loading === true" id="loading-wrapper">
     <img src="/assets/loading.svg" alt="" />
   </div>
@@ -79,16 +80,19 @@
         {{park.fullName}}
       </p>
     </div>
-    <div class="w-75">
+    <div
+    class="w-75"
+    ng-if="main.displayedPark.fullName !== undefined"
+    >
       <h3>Park Info:</h3>
-      <br />
+      <br/>
       <img
         class="w-25"
         ng-src="{{main.displayedPark.images[0].url}}"
         alt="Whoops! Image not found!"
       />
       <h4>{{main.displayedPark.fullName}}</h4>
-      <h4>{{main.displayedPark.parkCode}}</h4>
+      <!-- <h4>{{main.displayedPark.parkCode}}</h4> -->
       <p>{{main.displayedPark.description}}</p>
       <a target="_blank" href="{{main.displayedPark.url}}">See more here!</a>
     </div>
