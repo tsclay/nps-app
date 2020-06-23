@@ -81,7 +81,8 @@ p {
 }
 
 .delete-button,
-.toggle-dropdown {
+.toggle-dropdown,
+.add-favorite {
   line-height: 0;
   margin: 0;
   padding: 0;
