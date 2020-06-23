@@ -1,14 +1,12 @@
-<div>
-  <h1>Manage Account</h1>
-  <h3>Hello {{main.loggedInUser.firstName}}</h3>
-  <form ng-submit="main.updateUser(loggedInUser)">
-    First name:<br><input type="text" ng-model="main.updatedFirstName" placeholder="{{main.loggedInUser.firstName}}"><br>
-    Last name:<br><input type="text" ng-model="main.updatedLastName"><br>
-    Email:<br><input type="text" ng-model="main.updatedEmail"><br>
-    Phone number:<br><input type="text" ng-model="main.updatedPhoneNum"><br>
-    Username:<br><input type="text" ng-model="main.updatedUsername"><br>
-    Password:<br><input type="password" ng-model="main.updatedPassword" placeholder="new password"><br>
-    Premium user: <input type="checkbox" ng-model="main.updatedPremiumUser"><br>
-    <input type="submit" value="Apply Changes">
-  </form>
-</div>
+<h1>Manage Account</h1>
+<h3>Hello {{main.loggedInUser.firstName}}</h3>
+<form ng-submit="main.updateUser(loggedInUser)">
+  First name:<br><input type="text" ng-model="main.updatedFirstName" placeholder="{{main.loggedInUser.firstName}}"><br>
+  Last name:<br><input type="text" ng-model="main.updatedLastName"><br>
+  Email:<br><input type="text" ng-model="main.updatedEmail"><br>
+  Phone number:<br><input type="text" ng-model="main.updatedPhoneNum"><br>
+  Username:<br><input type="text" ng-model="main.updatedUsername"><br>
+  Password:<br><input type="password" ng-model="main.updatedPassword" placeholder="new password"><br>
+  Premium user: <input type="checkbox" ng-model="main.updatedPremiumUser"><br>
+  <button class="submit" type="submit">Update Account</button>
+</form>
