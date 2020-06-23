@@ -55,14 +55,42 @@
   <input type="text" ng-model="main.query" placeholder="Search" />
   <button type="submit">GO</button>
 </form>
-<div class="container" ng-class="main.loading ? 'flex-center-all' : null">
+<div ng-class="main.loading ? 'flex-center-all' : null">
   <div ng-if="main.loading === true" id="loading-wrapper">
     <img src="/assets/loading.svg" alt="" />
   </div>
-  <div class="overflow-scroll search-results">
-    <p ng-repeat="park in main.parks">{{park.fullName}}</p>
-  </div>
-  <div class="overflow-scroll search-results" ng-if="main.route !== 'parks'">
-    <p ng-repeat="park in main.parks.parks">{{park.fullName}}</p>
+  <div class="iMessages flex-row">
+    <div
+      ng-if="main.route === 'parks'"
+      class="overflow-scroll search-results w-25"
+    >
+      <p ng-repeat="park in main.parks" ng-click="main.displayedPark = park">
+        {{park.fullName}}
+      </p>
+    </div>
+    <div
+      class="overflow-scroll search-results w-25"
+      ng-if="main.route !== 'parks'"
+    >
+      <p
+        ng-repeat="park in main.parks.parks"
+        ng-click="main.displayedPark = park"
+      >
+        {{park.fullName}}
+      </p>
+    </div>
+    <div class="w-75">
+      <h3>Park Info:</h3>
+      <br />
+      <img
+        class="w-25"
+        ng-src="{{main.displayedPark.images[0].url}}"
+        alt="Whoops! Image not found!"
+      />
+      <h4>{{main.displayedPark.fullName}}</h4>
+      <h4>{{main.displayedPark.parkCode}}</h4>
+      <p>{{main.displayedPark.description}}</p>
+      <a href="{{main.displayedPark.url}}">See more here!</a>
+    </div>
   </div>
 </div>
