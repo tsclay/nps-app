@@ -26,6 +26,9 @@ npsUser.get('/', async (req, res) => {
 })
 
 npsUser.put('/:id', async (req, res) => {
+  if (req.body.password !== undefined) {
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  }
   try {
     const updateUser = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true

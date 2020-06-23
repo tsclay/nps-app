@@ -124,33 +124,41 @@ app.controller('mainController', [
           console.log(response.data)
           controller.loggedInUser = response.data
           controller.displayedPartial = controller.includePath[0]
+          this.updatedUsername = this.loggedInUser.username
+          this.updatedEmail = this.loggedInUser.email
+          this.updatedPhoneNum = this.loggedInUser.phoneNum
+          this.updatedFirstName = this.loggedInUser.firstName
+          this.updatedLastName = this.loggedInUser.lastName
+          this.updatedPremiumUser = this.loggedInUser.premiumUser
         } else {
           controller.loginUsername = null
           controller.loginPassword = null
         }
       })
     }
-    // this.updateUser = function() {
-    //   $http(
-    //     {
-    //       method: 'PUT',
-    //       url: '/nps',
-    //       data: {
-    //         username: ,// TODO: create input
-    //         password: ,// TODO: create input
-    //         email: ,// TODO: create input
-    //         phoneNum: ,// TODO: create input
-    //         firstName: ,// TODO: create input
-    //         lastName: ,// TODO: create input
-    //         premiumUser: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+
+    this.updateUser = function() {
+      $http(
+        {
+          method: 'PUT',
+          url: '/nps/' + controller.loggedInUser._id,
+          data: {
+            username: this.updatedUsername,
+            password: this.updatedPassword,
+            email: this.updatedEmail,
+            phoneNum: this.updatedPhoneNum,
+            firstName: this.updatedFirstName,
+            lastName: this.updatedLastName,
+            premiumUser: this.updatedPremiumUser
+          }
+        }
+      ).then(
+        function(response) {
+          console.log(response);
+          controller.loggedInUser = response.data
+        }
+      )
+    }
     this.logout = () => {
       $http({
         method: 'DELETE',
