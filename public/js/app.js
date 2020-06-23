@@ -94,7 +94,7 @@ app.controller('mainController', [
     }
 
     //   // User
-    this.loggedInUser = false;
+    this.loggedInUser = false
 
     this.signup = (event) => {
       $http({
@@ -110,28 +110,24 @@ app.controller('mainController', [
           console.log('Catch !!! ', error)
         })
     }
-    this.login = function() {
-      $http(
-        {
-          method: 'POST',
-          url: '/session',
-          data: {
-            username: this.loginUsername,
-            password: this.loginPassword
-          }
+    this.login = () => {
+      $http({
+        method: 'POST',
+        url: '/session',
+        data: {
+          username: this.loginUsername,
+          password: this.loginPassword
         }
-      ).then(
-        function(response) {
-          if (response.data.username) {
-            console.log(response.data);
-            controller.loggedInUser = response.data
-            controller.displayedPartial = controller.includePath[0]
-          } else {
-            controller.loginUsername = null;
-            controller.loginPassword = null;
-          }
+      }).then((response) => {
+        if (response.data.username) {
+          console.log(response.data)
+          controller.loggedInUser = response.data
+          controller.displayedPartial = controller.includePath[0]
+        } else {
+          controller.loginUsername = null
+          controller.loginPassword = null
         }
-      )
+      })
     }
     // this.updateUser = function() {
     //   $http(
@@ -154,17 +150,15 @@ app.controller('mainController', [
     //     }
     //   )
     // }
-    this.logout = function() {
-      $http(
-        {
-          method: 'DELETE',
-          url: '/session'
-        }
-      ).then(
-        function(response) {
-          console.log(response);
-        }
-      )
+    this.logout = () => {
+      $http({
+        method: 'DELETE',
+        url: '/session'
+      }).then((response) => {
+        this.displayedPartial = this.includePath[3]
+        this.loggedInUser = false
+        console.log(response)
+      })
     }
     // // Parks
     // this.addPark = function() {

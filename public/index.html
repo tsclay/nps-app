@@ -20,7 +20,7 @@
         src="./assets/logo.png"
         alt="parketList"
       />
-      <span class="nav-text">
+      <span ng-if="main.loggedInUser === false" class="nav-text">
         <a
           class="nav-link"
           ng-click="main.displayedPartial = main.includePath[2]"
@@ -37,7 +37,7 @@
           >Signup</a
         >
       </span>
-      <span class="nav-text">
+      <span ng-if="main.loggedInUser !== false" class="nav-text">
         <a
           class="nav-link"
           ng-click="main.displayedPartial = main.includePath[2]"
