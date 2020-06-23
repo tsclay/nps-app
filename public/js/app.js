@@ -202,11 +202,16 @@ app.controller("mainController", [
     //     }
     //   )
     // }
+    
     this.addParkToSchema = () => {
       $http({
         method: "POST",
         url: "/nps",
-        data: {},
+        data.favoriteParks: {name:},
+      }).then((response) => {
+        console.log(response);
+      }).catch((error) => {
+        console.log(error);
       });
     };
 
