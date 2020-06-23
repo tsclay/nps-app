@@ -40,7 +40,7 @@ npsUser.get('/', async (req, res) => {
   }
 })
 
-npsUser.get('/:id', async (req, res) => {
+npsUser.get('/:id/getParks', async (req, res) => {
   try {
     const findUser = await User.findById(req.params.id)
     res.status(200).json(findUser.favoriteParks)

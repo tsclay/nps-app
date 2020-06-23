@@ -1,13 +1,13 @@
 <div class="favorites">
   <h3>Favorites</h3>
   <br />
-  <dl ng-repeat="park in ourParks">
+  <dl ng-repeat="park in main.ourParks">
     <dt ng-click="function to show info()">{{park.name}}</dt>
     <img src="{{park.parkImage}}" alt="" />
     <dt ng-click="main.deletePark(._id)">X</dt>
   </dl>
 </div>
-<div class="favDetails">
+<div ng-repeat="park in main.ourParks" class="favDetails">
   <h3>Park Info:</h3>
   <br />
   <img src="{{park.parkImage}}" alt="" />

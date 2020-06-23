@@ -229,11 +229,12 @@ app.controller('mainController', [
     this.getSavedParks = () => {
       $http({
         method: 'GET',
-        url: `/nps/${this.loggedInUser._id} `
+        url: `/nps/${this.loggedInUser._id}/getParks`
       })
         .then((response) => {
-          controller.displayedPartial = controller.includePath[5]
-          this.ourParks = response.data.favoriteParks
+          console.log(response)
+          this.ourParks = response.data
+          this.displayedPartial = this.includePath[5]
         })
         .catch((error) => {
           console.log(error)
