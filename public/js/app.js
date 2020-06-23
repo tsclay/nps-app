@@ -202,7 +202,9 @@ app.controller("mainController", [
     //     }
     //   )
     // }
-    
+    this.log = () => {
+
+    }
     this.addParkToSchema = () => {
       $http({
         method: "POST",
