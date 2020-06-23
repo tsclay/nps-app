@@ -13,6 +13,7 @@ app.controller('mainController', [
       'partials/favorites.html',
       'partials/account.html'
     ]
+    this.displayedPartial = this.includePath[1]
     this.hello = 'Travel log'
     this.loading = false
     this.states = states
