@@ -111,6 +111,7 @@ app.controller('mainController', [
           console.log('Catch !!! ', error)
         })
     }
+
     this.login = () => {
       $http({
         method: 'POST',
