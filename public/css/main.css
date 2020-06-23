@@ -127,6 +127,12 @@ p {
   cursor: pointer;
 }
 
+/* Images ================= */
+.img {
+  width: 100px;
+  height: 100px;
+}
+
 /* ============================================ */
 /* PARTIALS WRAPPERS */
 .container {
