@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const fetch = require('node-fetch')
 const morgan = require('morgan')
 const moment = require('moment')
+const session = require('express-session')
 
 //==================================================
 // Configuration & Server App
@@ -18,8 +19,25 @@ const app = express()
 
 //==================================================
 // Middleware
+app.use(
+  session({
+    secret: 'feedmeseymour',
+    resave: false,
+    saveUninitialized: false
+  })
+)
 app.use(express.json())
 app.use(express.static('public'))
+
+//==================================================
+// Controllers
+const npsController = require('./controllers/npsController.js')
+
+app.use('/nps', npsController)
+
+const sessionController = require('./controllers/session.js')
+
+app.use('/session', sessionController)
 
 //==================================================
 // NPS API

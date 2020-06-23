@@ -1,4 +1,60 @@
 /* ============================================ */
+/* COLORS */
+:root {
+  --pastel-green: rgba(197, 255, 182, 1);
+  --full-green: rgba(14, 112, 3, 1);
+  --pro-green: #0e7003;
+}
+
+/* ============================================ */
+/* NON-PARTIALS */
+body {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background: linear-gradient(
+    0deg,
+    rgba(14, 112, 3, 1) 22%,
+    rgba(197, 255, 182, 1) 85%
+  );
+}
+
+nav {
+  height: 10%;
+  background-color: rgb(197, 255, 182);
+}
+
+.nav-text {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 20px;
+}
+
+.nav-text a {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  background-color: #0e7003;
+}
+
+footer a,
+p {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+/* ============================================ */
 /* COMPONENTS */
 
 /* Drop-down search bar ================= */
@@ -41,10 +97,6 @@
   transform: translateX(-20%);
 }
 
-.container {
-  min-height: 500px;
-}
-
 .selected {
   display: inline-flex;
   justify-content: space-between;
@@ -67,6 +119,34 @@
   position: fixed;
 }
 
+/* Logo image ================= */
+.logo {
+  height: 25%;
+  margin: 2%;
+  cursor: pointer;
+}
+
+/* ============================================ */
+/* PARTIALS WRAPPERS */
+.container {
+  height: 80%;
+}
+
+.trademark {
+  font-size: 0.4em;
+}
+
+.submit {
+  background-color: white;
+  color: rgba(14, 112, 3, 1);
+  border: 1px solid rgba(14, 112, 3, 1);
+}
+
+.submit:hover {
+  color: #fb960a;
+  border: 1px solid #fb960a;
+}
+
 /* ============================================ */
 /* WIDTHS */
 
@@ -86,6 +166,25 @@
 }
 
 /* ============================================ */
+/* MARGINS */
+
+.ml-1 {
+  margin-left: 1em;
+}
+
+.ml-2 {
+  margin-left: 2em;
+}
+
+.ml-3 {
+  margin-left: 3em;
+}
+
+.ml-4 {
+  margin-left: 4em;
+}
+
+/* ============================================ */
 /* FLEXBOX */
 
 .flex-center-all {
@@ -100,10 +199,22 @@
   justify-content: start;
 }
 
-.flex-row-sb {
+.flex-row {
   display: flex;
   flex-flow: row nowrap;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.sb {
   justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
 }
 
 /* ============================================ */
@@ -118,6 +229,28 @@
 }
 
 .overflow-scroll {
-  height: 150px;
   overflow: auto;
+}
+
+.standard-list * {
+  list-style: none;
+}
+
+.nav-link {
+  border: 0px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-link:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+#states {
+  height: 200px;
+}
+
+.search-results {
+  height: 400px;
 }
