@@ -204,17 +204,16 @@ app.controller('mainController', [
     // }
 
     this.addParkToSchema = (park) => {
-      // const image404 = ''
-      // if (park.images[0].url === undefined) {
-      //   park.images[0].url = null
-      // }
+      if (park.images.length === 0) {
+        park.images = [{ url: 'NotFound' }]
+      }
       $http({
         method: 'POST',
         url: `/nps/${this.loggedInUser._id}/addPark`,
         data: {
           name: park.fullName,
           parkId: park.parkCode,
-          parkImage: 'asdf',
+          parkImage: park.images[0].url,
           parkNotes: ''
         }
       })

@@ -18,9 +18,13 @@ npsUser.post('/', async (req, res) => {
 
 npsUser.post('/:id/addPark', async (req, res) => {
   try {
-    const findUser = await User.findByIdAndUpdate(req.params.id, {
-      $push: { favoriteParks: req.body }
-    })
+    const findUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: { favoriteParks: req.body }
+      },
+      { new: true }
+    )
     res.status(200).json(findUser)
   } catch (error) {
     res.status(400).json({ error: error.message })
