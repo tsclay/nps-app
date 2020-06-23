@@ -195,18 +195,19 @@ app.controller('mainController', [
     //     }
     //   )
     // }
-    // this.getSavedParks = function() {
-    //   $http(
-    //     {
-    //       method: 'GET',
-    //       url: // TODO: add route
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+    this.getSavedParks = () => {
+      $http({
+        method: 'GET',
+        url: `/nps/${this.loggedInUser._id} `
+      })
+        .then((response) => {
+          controller.displayedPartial = controller.includePath[5]
+          this.ourParks = response.data.favoriteParks
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
     // //////////////////////////////////////
     // //////////////////////////////////////
     // this.updateSavedPark = function() {
