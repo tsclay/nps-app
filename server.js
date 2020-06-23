@@ -43,12 +43,16 @@ app.use('/session', sessionController)
 // NPS API
 // Using async-await syntax to get fetch to work
 app.post('/getparks', async (req, res) => {
-  const { query, type, route } = req.body
-  const url = `https://developer.nps.gov/api/v1/${route}?${type}${query}&api_key=${API_KEY}`
-  const response = await fetch(url)
-  const json = await response.json()
-  res.json(json)
-  console.log(url)
+  try {
+    const { query, type, route } = req.body
+    const url = `https://developer.nps.gov/api/v1/${route}?${type}${query}&api_key=${API_KEY}`
+    const response = await fetch(url)
+    const json = await response.json()
+    res.json(json)
+    console.log(url)
+  } catch (error) {
+    res.json(error)
+  }
 })
 
 //==================================================

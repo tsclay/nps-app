@@ -141,6 +141,7 @@ app.controller('mainController', [
       })
     }
 
+<<<<<<< HEAD
     this.updateUser = function() {
       $http(
         {
@@ -163,6 +164,26 @@ app.controller('mainController', [
         }
       )
     }
+=======
+    this.updateUser = function () {
+      $http({
+        method: "PUT",
+        url: `/nps/${controller.loggedInUser._id}`,
+        data: {
+          username: this.updatedUsername,
+          password: this.updatedPassword,
+          email: this.updatedEmail,
+          phoneNum: this.updatedPhoneNum,
+          firstName: this.updatedFirstName,
+          lastName: this.updatedLastName,
+          premiumUser: this.updatedPremiumUser,
+        },
+      }).then(function (response) {
+        console.log(response);
+        controller.loggedInUser = response.data;
+      });
+    };
+>>>>>>> 43c3568f7105354e8c62799f89ff18eba110ce1f
     this.logout = () => {
       $http({
         method: 'DELETE',
@@ -206,6 +227,33 @@ app.controller('mainController', [
     //     }
     //   )
     // }
+<<<<<<< HEAD
+=======
+
+    this.addParkToSchema = (park) => {
+      if (park.images.length === 0) {
+        park.images = [{ url: "NotFound" }];
+      }
+      $http({
+        method: "POST",
+        url: `/nps/${this.loggedInUser._id}/addPark`,
+        data: {
+          name: park.fullName,
+          parkId: park.parkCode,
+          parkImage: park.images[0].url,
+          parkNotes: "",
+        },
+      })
+        .then((response) => {
+          console.log(response);
+          this.displayedPartial = this.includePath[1];
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+>>>>>>> 43c3568f7105354e8c62799f89ff18eba110ce1f
     this.getSavedParks = () => {
       $http({
         method: 'GET',
