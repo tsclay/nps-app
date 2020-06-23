@@ -136,6 +136,17 @@ p {
   font-size: 0.4em;
 }
 
+.submit {
+  background-color: white;
+  color: rgba(14, 112, 3, 1);
+  border: 1px solid rgba(14, 112, 3, 1);
+}
+
+.submit:hover {
+  color: #fb960a;
+  border: 1px solid #fb960a;
+}
+
 /* ============================================ */
 /* WIDTHS */
 

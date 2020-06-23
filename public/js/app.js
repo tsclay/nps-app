@@ -131,9 +131,12 @@ app.controller('mainController', [
           this.updatedFirstName = this.loggedInUser.firstName
           this.updatedLastName = this.loggedInUser.lastName
           this.updatedPremiumUser = this.loggedInUser.premiumUser
+          controller.loginUsername = null
+          controller.loginPassword = null
         } else {
           controller.loginUsername = null
           controller.loginPassword = null
+          console.log('Hello');
         }
       })
     }
