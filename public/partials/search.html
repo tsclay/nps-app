@@ -1,5 +1,5 @@
 <form
-  class="flex-row-sb w-100"
+  class="flex-row justify-end w-100"
   ng-submit="main.hitNPS(main.route, main.optionsSelected, main.query)"
 >
   <select ng-model="main.route">
@@ -44,7 +44,7 @@
     >
       <div
         id="{{state.name}}"
-        class="pointer"
+        class="pointer overlay"
         ng-click="main.selectState($index, $event, state.stateCode)"
         ng-repeat="state in main.states"
       >
