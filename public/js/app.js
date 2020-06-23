@@ -169,39 +169,6 @@ app.controller('mainController', [
         console.log(response)
       })
     }
-    // // Parks
-    // this.addPark = function() {
-    //   $http(
-    //     {
-    //       method: 'POST',
-    //       url: '/nps',
-    //       data: {
-    //         name: ,// TODO: create input
-    //         parkId: ,// TODO: create input
-    //         parkImage: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
-
-    // //////////////////////////////////////
-    // //////////////////////////////////////
-    // this.getAllParks = function() {
-    //   $http(
-    //     {
-    //       method: 'GET',
-    //       url: // TODO: add route
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
 
     this.addParkToSchema = (park) => {
       if (park.images.length === 0) {
