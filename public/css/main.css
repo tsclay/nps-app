@@ -170,7 +170,10 @@ p {
 }
 
 .w-75 {
+  display: flex;
+  flex-direction: column;
   width: 75%;
+  padding-left: 40px;
 }
 
 .w-100 {
@@ -310,7 +313,7 @@ p {
 }
 
 .overflow-scroll {
-  overflow: auto;
+  overflow: scroll;
 }
 
 .standard-list * {
