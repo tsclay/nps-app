@@ -94,7 +94,7 @@ app.controller("mainController", [
         });
     };
 
-    //   // User
+    // User
     this.loggedInUser = false;
 
     this.signup = (event) => {
@@ -144,7 +144,7 @@ app.controller("mainController", [
     this.updateUser = function () {
       $http({
         method: "PUT",
-        url: "/nps/" + controller.loggedInUser._id,
+        url: `/nps/${controller.loggedInUser._id}`,
         data: {
           username: this.updatedUsername,
           password: this.updatedPassword,
@@ -159,6 +159,7 @@ app.controller("mainController", [
         controller.loggedInUser = response.data;
       });
     };
+
     this.logout = () => {
       $http({
         method: "DELETE",
@@ -169,55 +170,41 @@ app.controller("mainController", [
         console.log(response);
       });
     };
-    // // Parks
-    // this.addPark = function() {
-    //   $http(
-    //     {
-    //       method: 'POST',
-    //       url: '/nps',
-    //       data: {
-    //         name: ,// TODO: create input
-    //         parkId: ,// TODO: create input
-    //         parkImage: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
 
-    // //////////////////////////////////////
-    // //////////////////////////////////////
-    // this.getAllParks = function() {
-    //   $http(
-    //     {
-    //       method: 'GET',
-    //       url: // TODO: add route
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
-    this.addParkToSchema = () => {
+    this.addParkToSchema = (park) => {
+      if (park.images.length === 0) {
+        park.images = [{ url: "NotFound" }];
+      }
       $http({
         method: "POST",
-        url: "/nps",
-        data: {},
-      });
+        url: `/nps/${this.loggedInUser._id}/addPark`,
+        data: {
+          name: park.fullName,
+          parkId: park.parkCode,
+          parkImage: park.images[0].url,
+          parkUrl: park.url,
+          parkDescription: park.description,
+          parkNotes: "",
+        },
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     this.getSavedParks = () => {
       $http({
         method: "GET",
-        url: `/nps/${this.loggedInUser._id} `,
+        url: `/nps/${this.loggedInUser._id}/getParks`,
       })
         .then((response) => {
-          controller.displayedPartial = controller.includePath[5];
-          this.ourParks = response.data.favoriteParks;
+          console.log(response);
+          this.ourParks = response.data;
+          console.log(this.ourParks);
+          this.displayedPartial = this.includePath[5];
         })
         .catch((error) => {
           console.log(error);
@@ -240,20 +227,19 @@ app.controller("mainController", [
     //     }
     //   )
     // }
-    // this.unsavePark = function() {
-    //   $http(
-    //     {
-    //       method: 'DELETE',
-    //       url: '/nps'
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
-    // this.getAllParks();
-    // this.getSavedParks();
+    this.deletePark = (parkId, $index) => {
+      $http({
+        method: "DELETE",
+        url: `/nps/${this.loggedInUser._id}/${parkId}`,
+      })
+        .then((response) => {
+          console.log(response);
+          this.ourParks.splice($index, 1);
+        })
+        .catch((error) => {
+          console.log("Catch ", error);
+        });
+    };
 
     // $http(
     //   {

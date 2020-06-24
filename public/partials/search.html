@@ -1,5 +1,5 @@
 <form
-  class="flex-row-sb w-100"
+  class="flex-row justify-end w-100"
   ng-submit="main.hitNPS(main.route, main.optionsSelected, main.query)"
 >
   <select ng-model="main.route">
@@ -24,6 +24,7 @@
       </svg>
     </button>
     <div class="dropdown">
+      <input autocomplete="off" type="text" placeholder="State" />
       <a class="selected" ng-repeat="state in main.selected"
         ><span>{{state}}</span
         ><button
@@ -34,7 +35,6 @@
           x
         </button></a
       >
-      <input autocomplete="off" type="text" placeholder="State" />
     </div>
     <div
       class="overflow-scroll w-100"
@@ -44,7 +44,7 @@
     >
       <div
         id="{{state.name}}"
-        class="pointer"
+        class="pointer overlay ml-1"
         ng-click="main.selectState($index, $event, state.stateCode)"
         ng-repeat="state in main.states"
       >
@@ -53,25 +53,43 @@
     </div>
   </div>
   <input type="text" ng-model="main.query" placeholder="Search" />
-  <button type="submit">GO</button>
+  <button class="submit" type="submit">GO</button>
 </form>
-<div ng-class="main.loading ? 'flex-center-all' : null">
+<div class="h-80" ng-class="main.loading ? 'flex-center-all' : null">
   <div ng-if="main.loading === true" id="loading-wrapper">
     <img src="/assets/loading.svg" alt="" />
   </div>
-  <div class="iMessages flex-row">
+  <div class="iMessages h-100 flex-row">
     <div
       ng-if="main.route === 'parks'"
-      class="overflow-scroll search-results w-25"
+      class="overflow-scroll search-results w-30"
     >
-      <p ng-repeat="park in main.parks" ng-click="main.displayedPark = park">
-        {{park.fullName}}
+      <p class="center" ng-repeat="park in main.parks">
+        <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+          <img
+            style="width: 20px; height: 20px;"
+            src="../assets/not-favorite.png"
+            alt=""
+          />
+        </button>
+        <a
+        class="nav-link"
+        ng-click="main.displayedPark = park"
+        href="#"
+        >{{park.fullName}}</a>
       </p>
     </div>
     <div
-      class="overflow-scroll search-results w-25"
+      class="overflow-scroll search-results w-30"
       ng-if="main.route !== 'parks'"
     >
+      <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+        <img
+          style="width: 20px; height: 20px;"
+          src="../assets/not-favorite.png"
+          alt=""
+        />
+      </button>
       <p
         ng-repeat="park in main.parks.parks"
         ng-click="main.displayedPark = park"
@@ -79,16 +97,14 @@
         {{park.fullName}}
       </p>
     </div>
-    <div class="w-75">
-      <h3>Park Info:</h3>
-      <br />
+    <div ng-if="main.displayedPark.fullName !== undefined" class="display-park w-75 pl-1">
+      <h4>{{main.displayedPark.fullName}}</h4>
       <img
-        class="w-25"
+        class="w-75"
         ng-src="{{main.displayedPark.images[0].url}}"
         alt="Whoops! Image not found!"
       />
-      <h4>{{main.displayedPark.fullName}}</h4>
-      <h4>{{main.displayedPark.parkCode}}</h4>
+      <!-- <h4>{{main.displayedPark.parkCode}}</h4> -->
       <p>{{main.displayedPark.description}}</p>
       <a target="_blank" href="{{main.displayedPark.url}}">See more here!</a>
     </div>
