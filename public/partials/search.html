@@ -97,14 +97,14 @@
         {{park.fullName}}
       </p>
     </div>
-    <div class="display-park w-75 pl-1">
+    <div ng-if="main.displayedPark.fullName !== undefined" class="display-park w-75 pl-1">
       <h4>{{main.displayedPark.fullName}}</h4>
       <img
         class="w-25"
         ng-src="{{main.displayedPark.images[0].url}}"
         alt="Whoops! Image not found!"
       />
-      <h4>{{main.displayedPark.parkCode}}</h4>
+      <!-- <h4>{{main.displayedPark.parkCode}}</h4> -->
       <p>{{main.displayedPark.description}}</p>
       <a target="_blank" href="{{main.displayedPark.url}}">See more here!</a>
     </div>
