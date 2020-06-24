@@ -49,5 +49,17 @@
     <h4>{{main.displayedPark.parkCode}}</h4>
     <p>{{main.displayedPark.parkDescription}}</p>
     <a target="_blank" href="{{main.displayedPark.parkUrl}}">See more here!</a>
+    <form ng-submit="main.updateNotes(main.displayedPark._id)">
+      <p>Note to self: {{main.displayedPark.parkNotes}}</p>
+      <p></p>
+      <textarea
+        class="textarea"
+        ng-model="main.ourNotes"
+        cols="60"
+        rows="10"
+      ></textarea>
+      <br />
+      <button class="submit" type="submit">ADD</button>
+    </form>
   </div>
 </div>
