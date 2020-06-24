@@ -64,7 +64,7 @@
       ng-if="main.route === 'parks'"
       class="overflow-scroll search-results w-30"
     >
-      <div ng-repeat="park in main.parks" class="flex-row sb mb-1">
+      <div ng-repeat="park in main.parks" class="flex-row justify-start mb-1">
         <div>
           <button ng-click="main.addParkToSchema(park)" class="add-favorite">
             <img
@@ -75,7 +75,12 @@
           </button>
         </div>
         <div class="ml-1">
-          <a ng-click="main.displayedPark = park" href="#">{{park.fullName}}</a>
+          <a
+            class="nav-link text-align-left"
+            ng-click="main.displayedPark = park"
+            href="#"
+            >{{park.fullName}}</a
+          >
         </div>
       </div>
     </div>
@@ -83,19 +88,25 @@
       class="overflow-scroll search-results w-30"
       ng-if="main.route !== 'parks'"
     >
-      <button ng-click="main.addParkToSchema(park)" class="add-favorite">
-        <img
-          style="width: 20px; height: 20px;"
-          src="../assets/not-favorite.png"
-          alt=""
-        />
-      </button>
-      <p
+      <div
         ng-repeat="park in main.parks.parks"
-        ng-click="main.displayedPark = park"
+        class="flex-row justify-start mb-1"
       >
-        {{park.fullName}}
-      </p>
+        <div>
+          <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+            <img
+              style="width: 20px; height: 20px;"
+              src="../assets/not-favorite.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="ml-1">
+          <a class="nav-link" ng-click="main.displayedPark = park" href="#"
+            >{{park.fullName}}</a
+          >
+        </div>
+      </div>
     </div>
     <div
       ng-if="main.displayedPark.fullName !== undefined"
