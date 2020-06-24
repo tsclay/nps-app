@@ -314,7 +314,7 @@ p {
 }
 
 .overflow-scroll {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .standard-list * {
