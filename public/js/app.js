@@ -187,7 +187,6 @@ app.controller('mainController', [
       })
         .then((response) => {
           console.log(response)
-          this.displayedPartial = this.includePath[1]
         })
         .catch((error) => {
           console.log(error)
@@ -202,6 +201,7 @@ app.controller('mainController', [
         .then((response) => {
           console.log(response)
           this.ourParks = response.data
+          console.log(this.ourParks)
           this.displayedPartial = this.includePath[5]
         })
         .catch((error) => {

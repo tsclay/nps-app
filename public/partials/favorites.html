@@ -1,4 +1,4 @@
-<div class="favorites">
+<!-- <div class="favorites">
   <h3>Favorites</h3>
   <br />
   <dl ng-repeat="park in ourParks">
@@ -9,10 +9,33 @@
 </div>
 <div class="favDetails">
   <h3>Park Info:</h3>
+<<<<<<< HEAD
   <br />
   <img src="{{park.parkImage}}" alt="" />
   <h4>{{ park.name }}</h4>
 
   <h4>{{main.?.hiking}}</h4>
   <h4>{{main.?.notes}}</h4>
+=======
+  <img class="img" src="{{park.parkImage}}" alt="" />
+</div> -->
+<!-- copy of search.html -->
+<div class="iMessages h-100 flex-row">
+  <div class="overflow-scroll search-results w-25">
+    <p ng-repeat="park in main.ourParks">
+      <a ng-click="main.displayedPark = park" href="#">{{park.name}}</a>
+    </p>
+  </div>
+  <div class="display-park w-75 pl-1">
+    <h4>{{main.displayedPark.name}}</h4>
+    <img
+      class="w-25"
+      ng-src="{{main.displayedPark.parkImage}}"
+      alt="Whoops! Image not found!"
+    />
+    <h4>{{main.displayedPark.parkCode}}</h4>
+    <p>{{main.displayedPark.parkImage}}</p>
+    <a target="_blank" href="{{main.displayedPark.url}}">See more here!</a>
+  </div>
+>>>>>>> 5b456d0aae835b23d39fc1e45b2bbd892e2d9b9b
 </div>
