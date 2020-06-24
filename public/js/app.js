@@ -210,23 +210,28 @@ app.controller('mainController', [
           console.log(error)
         })
     }
-    // //////////////////////////////////////
-    // //////////////////////////////////////
-    // this.updateSavedPark = function() {
-    //   $http(
-    //     {
-    //       method: 'PUT',
-    //       url: '/nps',
-    //       data: {
-    //         parkNotes: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
+
+    this.ourNotes = null
+    this.updateNotes = (parkId) => {
+      $http({
+        method: 'PUT',
+        url: `nps/${this.loggedInUser._id}/${parkId}`,
+        data: {
+          parkNotes: this.ourNotes
+        }
+      })
+        .then((response) => {
+          console.log(response)
+          console.log(this.ourNotes)
+          this.loggedInUser = response.data
+          this.displayedPark.parkNotes = this.ourNotes
+          this.ourNotes = null
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+
     this.deletePark = (parkId, $index) => {
       $http({
         method: 'DELETE',

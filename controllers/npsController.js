@@ -52,24 +52,6 @@ npsUser.get('/:id/getParks', async (req, res) => {
   }
 })
 
-// Update user info in Account
-npsUser.put('/:id', async (req, res) => {
-  if (req.body.password !== undefined) {
-    req.body.password = bcrypt.hashSync(
-      req.body.password,
-      bcrypt.genSaltSync(10)
-    )
-  }
-  try {
-    const updateUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
-    })
-    res.status(200).json(updateUser)
-  } catch (error) {
-    res.status(400).json({ error: error.message })
-  }
-})
-
 // Delete park from favorites
 npsUser.delete('/:id/:parkId', async (req, res) => {
   try {
@@ -89,6 +71,40 @@ npsUser.delete('/:id', async (req, res) => {
   try {
     const deleteUser = await User.findByIdAndRemove(req.params.id)
     res.status(200).json(deleteUser)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+})
+
+npsUser.put('/:id/:parkId', (req, res) => {
+  User.findById(req.params.id, (error, foundUser) => {
+    if (error) console.log(error)
+    const park = foundUser.favoriteParks.id(req.params.parkId)
+    park.parkNotes = req.body.parkNotes
+    foundUser
+      .save()
+      .then((savedUser) => {
+        res.status(200).json(savedUser)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  })
+})
+
+// Update user info in Account
+npsUser.put('/:id', async (req, res) => {
+  if (req.body.password !== undefined) {
+    req.body.password = bcrypt.hashSync(
+      req.body.password,
+      bcrypt.genSaltSync(10)
+    )
+  }
+  try {
+    const updateUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    })
+    res.status(200).json(updateUser)
   } catch (error) {
     res.status(400).json({ error: error.message })
   }
