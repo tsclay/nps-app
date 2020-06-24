@@ -30,14 +30,11 @@
         </button>
       </div>
       <div class="ml-1">
-        <a ng-click="main.displayedPark = park" href="#">{{park.name}}</a>
+        <a class="nav-link" ng-click="main.displayedPark = park" href="#"
+          >{{park.name}}</a
+        >
       </div>
     </div>
-    <p ng-repeat="park in main.ourParks">
-      <a class="nav-link" ng-click="main.displayedPark = park" href="#"
-        >{{park.name}}</a
-      >
-    </p>
   </div>
   <div
     ng-if="main.displayedPark.name !== undefined"
