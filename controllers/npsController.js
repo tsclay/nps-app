@@ -75,7 +75,7 @@ npsUser.delete('/:id/:parkId', async (req, res) => {
   try {
     const deleteThis = await User.findByIdAndUpdate(
       req.params.id,
-      { $pull: { favoriteParks: { parkId: req.params.parkId } } },
+      { $pull: { favoriteParks: { _id: req.params.parkId } } },
       { new: true }
     )
     res.status(200).json(deleteThis)
