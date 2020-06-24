@@ -23,10 +23,10 @@
 <div class="iMessages h-100 flex-row">
   <div class="overflow-scroll search-results w-30">
     <p ng-repeat="park in main.ourParks">
-      <a ng-click="main.displayedPark = park" href="#">{{park.name}}</a>
+      <a class="nav-link" ng-click="main.displayedPark = park" href="#">{{park.name}}</a>
     </p>
   </div>
-  <div class="display-park w-70 mx-1">
+  <div ng-if="main.displayedPark.name !== undefined" class="display-park w-70 mx-1">
     <h4>{{main.displayedPark.name}}</h4>
     <img
       class="w-75"
