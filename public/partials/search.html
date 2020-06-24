@@ -62,7 +62,7 @@
   <div class="iMessages h-100 flex-row">
     <div
       ng-if="main.route === 'parks'"
-      class="overflow-scroll search-results w-25"
+      class="overflow-scroll search-results w-30"
     >
       <p ng-repeat="park in main.parks">
         <button ng-click="main.addParkToSchema(park)" class="add-favorite">
@@ -76,7 +76,7 @@
       </p>
     </div>
     <div
-      class="overflow-scroll search-results w-25"
+      class="overflow-scroll search-results w-30"
       ng-if="main.route !== 'parks'"
     >
       <button ng-click="main.addParkToSchema(park)" class="add-favorite">
@@ -93,7 +93,7 @@
         {{park.fullName}}
       </p>
     </div>
-    <div class="display-park w-75 pl-1">
+    <div class="display-park w-70 mx-1">
       <h4>{{main.displayedPark.fullName}}</h4>
       <img
         class="w-25"
