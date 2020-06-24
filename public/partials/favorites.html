@@ -22,9 +22,19 @@
 <!-- copy of search.html -->
 <div class="iMessages h-100 flex-row">
   <div class="overflow-scroll search-results w-30">
-    <p ng-repeat="park in main.ourParks">
-      <a ng-click="main.displayedPark = park" href="#">{{park.name}}</a>
-    </p>
+    <div ng-repeat="park in main.ourParks" class="flex-row sb mb-1">
+      <div>
+        <button
+          class="add-favorite"
+          ng-click="main.deletePark(park._id, $index)"
+        >
+          x
+        </button>
+      </div>
+      <div class="ml-1">
+        <a ng-click="main.displayedPark = park" href="#">{{park.name}}</a>
+      </div>
+    </div>
   </div>
   <div class="display-park w-70 mx-1">
     <h4>{{main.displayedPark.name}}</h4>
