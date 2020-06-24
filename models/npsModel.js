@@ -13,6 +13,8 @@ const userSchema = mongoose.Schema({
       name: String,
       parkId: String,
       parkImage: String,
+      parkUrl: String,
+      parkDescription: String,
       parkNotes: String
     }
   ]
