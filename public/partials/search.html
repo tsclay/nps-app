@@ -64,47 +64,60 @@
       ng-if="main.route === 'parks'"
       class="overflow-scroll search-results w-30"
     >
-      <p class="center" ng-repeat="park in main.parks">
-        <button ng-click="main.addParkToSchema(park)" class="add-favorite">
-          <img
-            style="width: 20px; height: 20px;"
-            src="../assets/not-favorite.png"
-            alt=""
-          />
-        </button>
-        <a
-        class="nav-link"
-        ng-click="main.displayedPark = park"
-        href="#"
-        >{{park.fullName}}</a>
-      </p>
+      <div ng-repeat="park in main.parks" class="flex-row justify-start mb-1">
+        <div>
+          <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+            <img
+              style="width: 20px; height: 20px;"
+              src="../assets/not-favorite.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="ml-1">
+          <a
+            class="nav-link text-align-left"
+            ng-click="main.displayedPark = park"
+            href="#"
+            >{{park.fullName}}</a
+          >
+        </div>
+      </div>
     </div>
     <div
       class="overflow-scroll search-results w-30"
       ng-if="main.route !== 'parks'"
     >
-      <button ng-click="main.addParkToSchema(park)" class="add-favorite">
-        <img
-          style="width: 20px; height: 20px;"
-          src="../assets/not-favorite.png"
-          alt=""
-        />
-      </button>
-      <p
+      <div
         ng-repeat="park in main.parks.parks"
-        ng-click="main.displayedPark = park"
+        class="flex-row justify-start mb-1"
       >
-        {{park.fullName}}
-      </p>
+        <div>
+          <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+            <img
+              style="width: 20px; height: 20px;"
+              src="../assets/not-favorite.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="ml-1">
+          <a class="nav-link" ng-click="main.displayedPark = park" href="#"
+            >{{park.fullName}}</a
+          >
+        </div>
+      </div>
     </div>
-    <div ng-if="main.displayedPark.fullName !== undefined" class="display-park w-75 pl-1">
+    <div
+      ng-if="main.displayedPark.fullName !== undefined"
+      class="display-park w-75 pl-1"
+    >
       <h4>{{main.displayedPark.fullName}}</h4>
       <img
         class="w-75"
         ng-src="{{main.displayedPark.images[0].url}}"
         alt="Whoops! Image not found!"
       />
-      <!-- <h4>{{main.displayedPark.parkCode}}</h4> -->
       <p>{{main.displayedPark.description}}</p>
       <a target="_blank" href="{{main.displayedPark.url}}">See more here!</a>
     </div>
