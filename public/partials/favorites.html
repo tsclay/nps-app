@@ -21,12 +21,12 @@
 </div> -->
 <!-- copy of search.html -->
 <div class="iMessages h-100 flex-row">
-  <div class="overflow-scroll search-results w-25">
+  <div class="overflow-scroll search-results w-30">
     <p ng-repeat="park in main.ourParks">
       <a ng-click="main.displayedPark = park" href="#">{{park.name}}</a>
     </p>
   </div>
-  <div class="display-park w-75 pl-1">
+  <div class="display-park w-70 mx-1">
     <h4>{{main.displayedPark.name}}</h4>
     <img
       class="w-25"
@@ -34,8 +34,7 @@
       alt="Whoops! Image not found!"
     />
     <h4>{{main.displayedPark.parkCode}}</h4>
-    <p>{{main.displayedPark.parkImage}}</p>
+    <p>{{main.displayedPark.description}}</p>
     <a target="_blank" href="{{main.displayedPark.url}}">See more here!</a>
   </div>
->>>>>>> 5b456d0aae835b23d39fc1e45b2bbd892e2d9b9b
 </div>
