@@ -326,9 +326,7 @@ p {
   align-items: center;
 }
 
-.flex-row-start {
-  display: flex;
-  flex-flow: row nowrap;
+.justify-start {
   justify-content: start;
 }
 
@@ -404,4 +402,12 @@ p {
 .display-park {
   height: 100%;
   overflow: auto;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.textarea {
+  resize: none;
 }
