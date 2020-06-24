@@ -55,8 +55,7 @@
   <input type="text" ng-model="main.query" placeholder="Search" />
   <button class="submit" type="submit">GO</button>
 </form>
-<div
-ng-class="main.loading ? 'flex-center-all' : null">
+<div ng-class="main.loading ? 'flex-center-all' : null">
   <div ng-if="main.loading === true" id="loading-wrapper">
     <img src="/assets/loading.svg" alt="" />
   </div>
@@ -65,14 +64,28 @@ ng-class="main.loading ? 'flex-center-all' : null">
       ng-if="main.route === 'parks'"
       class="overflow-scroll search-results w-25"
     >
-      <p ng-repeat="park in main.parks" ng-click="main.displayedPark = park">
-        {{park.fullName}}
+      <p ng-repeat="park in main.parks">
+        <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+          <img
+            style="width: 20px; height: 20px;"
+            src="../assets/not-favorite.png"
+            alt=""
+          />
+        </button>
+        <a ng-click="main.displayedPark = park" href="#">{{park.fullName}}</a>
       </p>
     </div>
     <div
       class="overflow-scroll search-results w-25"
       ng-if="main.route !== 'parks'"
     >
+      <button ng-click="main.addParkToSchema(park)" class="add-favorite">
+        <img
+          style="width: 20px; height: 20px;"
+          src="../assets/not-favorite.png"
+          alt=""
+        />
+      </button>
       <p
         ng-repeat="park in main.parks.parks"
         ng-click="main.displayedPark = park"
