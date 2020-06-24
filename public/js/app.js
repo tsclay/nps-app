@@ -94,7 +94,7 @@ app.controller('mainController', [
         })
     }
 
-    //   // User
+    // User
     this.loggedInUser = false
 
     this.signup = (event) => {
@@ -171,40 +171,6 @@ app.controller('mainController', [
       })
     }
 
-    // // Parks
-    // this.addPark = function() {
-    //   $http(
-    //     {
-    //       method: 'POST',
-    //       url: '/nps',
-    //       data: {
-    //         name: ,// TODO: create input
-    //         parkId: ,// TODO: create input
-    //         parkImage: // TODO: create input
-    //       }
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
-
-    // //////////////////////////////////////
-    // //////////////////////////////////////
-    // this.getAllParks = function() {
-    //   $http(
-    //     {
-    //       method: 'GET',
-    //       url: // TODO: add route
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
-
     this.addParkToSchema = (park) => {
       if (park.images.length === 0) {
         park.images = [{ url: 'NotFound' }]
@@ -237,7 +203,6 @@ app.controller('mainController', [
           console.log(response)
           this.ourParks = response.data
           this.displayedPartial = this.includePath[5]
-
         })
         .catch((error) => {
           console.log(error)
@@ -260,20 +225,19 @@ app.controller('mainController', [
     //     }
     //   )
     // }
-    // this.unsavePark = function() {
-    //   $http(
-    //     {
-    //       method: 'DELETE',
-    //       url: '/nps'
-    //     }
-    //   ).then(
-    //     function(response) {
-    //       console.log(response);
-    //     }
-    //   )
-    // }
-    // this.getAllParks();
-    // this.getSavedParks();
+    this.deletePark = (parkId, $index) => {
+      $http({
+        method: 'DELETE',
+        url: `/nps/${this.loggedInUser._id}/${parkId}`
+      })
+        .then((response) => {
+          console.log(response)
+          this.ourParks.splice($index, 1)
+        })
+        .catch((error) => {
+          console.log('Catch ', error)
+        })
+    }
 
     // $http(
     //   {

@@ -1,5 +1,5 @@
 <form
-  class="flex-row-sb w-100"
+  class="flex-row justify-end w-100"
   ng-submit="main.hitNPS(main.route, main.optionsSelected, main.query)"
 >
   <select ng-model="main.route">
@@ -24,6 +24,7 @@
       </svg>
     </button>
     <div class="dropdown">
+      <input autocomplete="off" type="text" placeholder="State" />
       <a class="selected" ng-repeat="state in main.selected"
         ><span>{{state}}</span
         ><button
@@ -34,7 +35,6 @@
           x
         </button></a
       >
-      <input autocomplete="off" type="text" placeholder="State" />
     </div>
     <div
       class="overflow-scroll w-100"
@@ -44,7 +44,7 @@
     >
       <div
         id="{{state.name}}"
-        class="pointer"
+        class="pointer overlay ml-1"
         ng-click="main.selectState($index, $event, state.stateCode)"
         ng-repeat="state in main.states"
       >
@@ -55,11 +55,11 @@
   <input type="text" ng-model="main.query" placeholder="Search" />
   <button class="submit" type="submit">GO</button>
 </form>
-<div ng-class="main.loading ? 'flex-center-all' : null">
+<div class="h-80" ng-class="main.loading ? 'flex-center-all' : null">
   <div ng-if="main.loading === true" id="loading-wrapper">
     <img src="/assets/loading.svg" alt="" />
   </div>
-  <div class="iMessages flex-row">
+  <div class="iMessages h-100 flex-row">
     <div
       ng-if="main.route === 'parks'"
       class="overflow-scroll search-results w-25"
