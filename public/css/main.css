@@ -128,7 +128,8 @@ p {
 
 /* Logo image ================= */
 .logo {
-  height: 25%;
+  max-height: 40px;
+  min-height: 40%;
   margin: 2%;
   cursor: pointer;
 }
@@ -316,7 +317,7 @@ p {
 }
 
 .overflow-scroll {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .standard-list * {
