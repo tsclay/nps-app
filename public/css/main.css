@@ -303,6 +303,9 @@ p {
 
 /* ============================================ */
 /* UTILITIES */
+.center {
+  text-align: right;
+}
 
 .hidden {
   display: none;
